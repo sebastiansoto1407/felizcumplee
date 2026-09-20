@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Razones Extra</title>
+<meta name="description" content="Más razones por las que te celebramos — cumple 20+">
+<style>
+  :root{
+    --bgTop:#0f132a; --bgBot:#0b0e20;
+    --ink:#f7f8ff; --muted:#b9c0ff;
+    --border:rgba(255,255,255,.12);
+    --acc:#ff7ad9; --acc-2:#7ad8ff;
+    --glow:0 12px 32px rgba(122,216,255,.18);
+    --radius:16px; --max:1060px;
+  }
+  *{box-sizing:border-box; min-width:0}
+  html,body{height:100%}
+  body{
+    margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    color:var(--ink);
+    background:linear-gradient(180deg,var(--bgTop) 0%,var(--bgBot) 100%) no-repeat fixed;
+    overflow-x:hidden; -webkit-text-size-adjust:100%;
+  }
+  a{color:inherit; text-decoration:none}
+  .container{width:100%; max-width:var(--max); margin:0 auto; padding:0 18px}
+
+  .stars{
+    position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.4;
+    background-image:
+      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.33) 40%, transparent 41%),
+      radial-gradient(2px 2px at 80% 20%, rgba(255,255,255,.26) 40%, transparent 41%),
+      radial-gradient(2px 2px at 60% 80%, rgba(255,255,255,.22) 40%, transparent 41%),
+      radial-gradient(1.6px 1.6px at 30% 70%, rgba(255,255,255,.20) 40%, transparent 41%),
+      radial-gradient(1.6px 1.6px at 70% 60%, rgba(255,255,255,.20) 40%, transparent 41%);
+    animation: twinkle 9s linear infinite;
+  }
+  @keyframes twinkle{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+  header{
+    position:sticky; top:0; z-index:10;
+    backdrop-filter: blur(10px);
+    background:linear-gradient(180deg,rgba(14,18,36,.6),rgba(14,18,36,0));
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:60px;gap:8px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px}
+  .badge{font-size:11px;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--acc),var(--acc-2));color:#101225}
+  .tagrow{display:flex;gap:8px}
+  .tag{background:rgba(255,255,255,.06);border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:12px;color:#dfe3ff}
+
+  .hero{text-align:center;padding: clamp(52px,9vw,110px) 0 18px}
+  .title{margin:0;font-size:clamp(28px,6vw,54px)}
+  .sub{margin:10px auto 16px;color:var(--muted);max-width:720px;font-size:clamp(14px,1.5vw,18px)}
+
+  section{padding:28px 0}
+  .grid{display:grid;gap:14px;grid-template-columns:1fr}
+  @media(min-width:560px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+  .card{
+    background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03));
+    border:1px solid var(--border);
+    border-radius:16px; padding:16px;
+    display:flex; flex-direction:column; gap:10px;
+    min-height:170px;
+    transition:transform .15s ease,border-color .2s ease,box-shadow .2s ease;
+  }
+  @media(min-width:900px){.card{min-height:190px}}
+  .card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22);box-shadow:var(--glow)}
+  .num{font-weight:900;font-size:12px;letter-spacing:.8px;color:#0f1226;background:linear-gradient(90deg,var(--acc-2),var(--acc));padding:6px 10px;border-radius:999px;align-self:flex-start}
+  .text{flex:1;display:flex;align-items:center;color:#e9ecff;opacity:.95;line-height:1.6;font-size:15.5px}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  footer{padding:36px 0 60px;color:#cdd3ff;opacity:.85}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <span class="badge">Edición especial</span>
+      <span>Razones Extra 🌟</span>
+    </div>
+    <nav class="tagrow">
+      <a class="tag" href="razones.html">← Volver a las 20 razones</a>
+      <a class="tag" href="index.html"> Inicio</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1 class="title">¡Más razones para celebrarte!</h1>
+    <p class="sub">Aquí siguen más bloques para que agregues todo lo que quieras escribir ❤️</p>
+  </div>
+</section>
+
+<section>
+  <div class="container grid">
+    <!-- 30 ejemplos, edita a tu gusto -->
+    <article class="card reveal"><span class="num">21</span><p class="text">Me haces sentir especial sin decir una palabra.
+</p></article>
+    <article class="card reveal"><span class="num">22</span><p class="text">Siempre me das fuerzas cuando lo necesito.</p></article>
+    <article class="card reveal"><span class="num">23</span><p class="text">Tienes ocurrencias que me hacen reír.</p></article>
+    <article class="card reveal"><span class="num">24</span><p class="text">Tu mirada transmite paz.</p></article>
+    <article class="card reveal"><span class="num">25</span><p class="text">Me motivas a ser mejor persona.</p></article>
+    <article class="card reveal"><span class="num">26</span><p class="text">Hay ternura en cada cosa que haces.
+</p></article>
+    <article class="card reveal"><span class="num">27</span><p class="text">Siempre encuentras algo positivo en todo.</p></article>
+    <article class="card reveal"><span class="num">28</span><p class="text">Sabes hacer sentir especial a los demás.</p></article>
+    <article class="card reveal"><span class="num">29</span><p class="text">Cuando sonríes, el mundo se detiene un segundo.</p></article>
+    <article class="card reveal"><span class="num">30</span><p class="text">Me recuerdas lo bonito que es la vida cuando estoy contigo.</p></article>
+    <article class="card reveal"><span class="num">31</span><p class="text">Me haces sentir afortunado por coincidir contigo.</p></article>
+    <article class="card reveal"><span class="num">32</span><p class="text">Sabes dar consejos acertados.</p></article>
+    <article class="card reveal"><span class="num">33</span><p class="text">Siempre estás ahí en los momentos importantes.</p></article>
+    <article class="card reveal"><span class="num">34</span><p class="text">Tienes una sonrisa única.</p></article>
+    <article class="card reveal"><span class="num">35</span><p class="text">Tu esencia se queda, incluso cuando te vas.</p></article>
+    <article class="card reveal"><span class="num">36</span><p class="text">Tu voz transmite calma.</p></article>
+    <article class="card reveal"><span class="num">37</span><p class="text">Tu compañía siempre alegra.</p></article>
+    <article class="card reveal"><span class="num">38</span><p class="text">Nunca dejas de sorprenderme.</p></article>
+    <article class="card reveal"><span class="num">39</span><p class="text">Tienes una sensibilidad hermosa.</p></article>
+    <article class="card reveal"><span class="num">40</span><p class="text">Tu forma de ser es un regalo.</p></article>
+    <article class="card reveal"><span class="num">41</span><p class="text">Siempre das lo mejor de ti.</p></article>
+    <article class="card reveal"><span class="num">42</span><p class="text">Eres luz, incluso cuando no lo notas.</p></article>
+    <article class="card reveal"><span class="num">43</span><p class="text">Eres mi refugio en los días grises.</p></article>
+    <article class="card reveal"><span class="num">44</span><p class="text">Me haces sentir valorado.</p></article>
+    <article class="card reveal"><span class="num">45</span><p class="text">Tu risa contagiosa alegra todo.</p></article>
+    <article class="card reveal"><span class="num">46</span><p class="text">Hay algo en ti que me da paz.
+</p></article>
+    <article class="card reveal"><span class="num">47</span><p class="text">Siempre sabes animar.</p></article>
+    <article class="card reveal"><span class="num">48</span><p class="text">Eres especial por mil razones.</p></article>
+    <article class="card reveal"><span class="num">49</span><p class="text">Me gusta como me haces sentir</p></article>
+    <article class="card reveal"><span class="num">50</span><p class="text">Porque contigo todo es mejor.</p></article> 
+    <article class="card reveal"><span class="num">51</span><p class="text">Me haces sentir que soy suficiente</p></article>
+<article class="card reveal"><span class="num">52</span><p class="text">Tu ternura me abraza sin tocarme.(tierna mua)
+</p></article>
+<article class="card reveal"><span class="num">53</span><p class="text">Contigo, hasta el silencio tiene sentido.</p></article>
+<article class="card reveal"><span class="num">54</span><p class="text">Tu cariño se nota en los detalles más pequeños.
+</p></article>
+<article class="card reveal"><span class="num">55</span><p class="text">Me haces sentir que todo va a estar bien.</p></article>
+<article class="card reveal"><span class="num">56</span><p class="text">Eres esa calma que llega sin avisar.
+</p></article>
+<article class="card reveal"><span class="num">57</span><p class="text">Tu alegría se nota incluso en los días difíciles.
+</p></article>
+<article class="card reveal"><span class="num">58</span><p class="text">Me gusta cómo haces que todo tenga sentido.</p></article>
+<article class="card reveal"><span class="num">59</span><p class="text">Tu cariño me llega sin que lo digas.</p></article>
+<article class="card reveal"><span class="num">60</span><p class="text">Me haces sentir que soy importante para ti.
+</p></article>
+<article class="card reveal"><span class="num">61</span><p class="text">Me haces sonreír sin darte cuenta.
+</p></article>
+<article class="card reveal"><span class="num">62</span><p class="text">Tu forma de hablar me da calma.</p></article>
+<article class="card reveal"><span class="num">63</span><p class="text">Me haces sentir que todo va a salir bien.</p></article>
+<article class="card reveal"><span class="num">64</span><p class="text">Tu mirada tiene algo que me abraza.</p></article>
+<article class="card reveal"><span class="num">65</span><p class="text">Me encanta ser solo yo mismo cuando estoy contigo.</p></article>
+<article class="card reveal"><span class="num">66</span><p class="text">Me gusta cómo haces que el tiempo pase más lento.</p></article>
+<article class="card reveal"><span class="num">67</span><p class="text">Tu presencia me da ganas de quedarme.(aunque vos quieres que me vaya)
+</p></article>
+<article class="card reveal"><span class="num">68</span><p class="text">Contigo, todo fluye.</p></article>
+<article class="card reveal"><span class="num">69</span><p class="text">Tu apoyo me hace mas fuerte.</p></article>
+<article class="card reveal"><span class="num">70</span><p class="text">Eres muy linda.</p></article>
+<article class="card reveal"><span class="num">71</span><p class="text">Me encanta tu risa.</p></article>
+<article class="card reveal"><span class="num">72</span><p class="text">Me gusta tu voz.
+</p></article>
+<article class="card reveal"><span class="num">73</span><p class="text">Me haces bien.</p></article>
+<article class="card reveal"><span class="num">74</span><p class="text">Me cuidas bonito.</p></article>
+<article class="card reveal"><span class="num">75</span><p class="text">Me gusta que solo vos me puedas decir bonito.</p></article>
+<article class="card reveal"><span class="num">76</span><p class="text">Me siento en casa contigo.</p></article>
+<article class="card reveal"><span class="num">77</span><p class="text">Eres paz para mí.</p></article>
+<article class="card reveal"><span class="num">78</span><p class="text">Eres suficiente para mi.</p></article>
+<article class="card reveal"><span class="num">79</span><p class="text">Tus notitas me acompañan más de lo que imaginas.</p></article>
+<article class="card reveal"><span class="num">80</span><p class="text">Me encanta cuando te ríes y te brillan los ojitos.</p></article>
+<article class="card reveal"><span class="num">81</span><p class="text">Tu presencia me recuerda que las cosas buenas aún pasan.</p></article>
+<article class="card reveal"><span class="num">82</span><p class="text">Me gusta la paz que traes incluso en días movidos.</p></article>
+<article class="card reveal"><span class="num">83</span><p class="text">Con vos, salir a la esquina ya es un planazo.</p></article>
+<article class="card reveal"><span class="num">84</span><p class="text">Contigo, cualquier lugar se siente familiar y seguro.</p></article>
+<article class="card reveal"><span class="num">85</span><p class="text">Me gusta estar tu y yo solitos sin nadie mas.</p></article>
+<article class="card reveal"><span class="num">86</span><p class="text">Me encanta que te rías de mis chistes todos xd.</p></article>
+<article class="card reveal"><span class="num">87</span><p class="text">Me encanta que confíes en mí para contarlo todo.</p></article>
+<article class="card reveal"><span class="num">88</span><p class="text">Me gusta cuando te brillan los ojos contando algo que te gusta.</p></article>
+<article class="card reveal"><span class="num">89</span><p class="text">Me encanta tu manera sincera de decir lo que sientes.</p></article>
+<article class="card reveal"><span class="num">90</span><p class="text">Tus mensajes a mitad del día me levantan el ánimo.</p></article>
+<article class="card reveal"><span class="num">91</span><p class="text">Ver mensajes tuyos despues de un dia pesado en la u me encantan</p></article>
+<article class="card reveal"><span class="num">92</span><p class="text">Tus historias traen colores lindos a mi cabeza.</p></article>
+<article class="card reveal"><span class="num">93</span><p class="text">Me gusta nuestros momentos randoms</p></article>
+<article class="card reveal"><span class="num">94</span><p class="text">Me encanta cómo encuentras algo bueno incluso en días raros.</p></article>
+<article class="card reveal"><span class="num">95</span><p class="text">Contigo, hasta una caminata corta se siente especial.</p></article>
+<article class="card reveal"><span class="num">96</span><p class="text">Tu manera de despedirte me deja el día suave.</p></article>
+<article class="card reveal"><span class="num">97</span><p class="text">Odio cuando ya es hora de irme, porque quisiera estar todo el tiempo contigo</p></article>
+<article class="card reveal"><span class="num">98</span><p class="text">Me gusta pensar en ti y sonreír sin darme cuenta.</p></article>
+<article class="card reveal"><span class="num">99</span><p class="text">Me encantas</p></article>
+<article class="card reveal"><span class="num">100</span><p class="text">Si supieras cuantas veces veo tus notitas al dia.</p></article>
+<article class="card reveal"><span class="num"></span><p class="text">Te quiero, te adoro, te todo 💖</p></article>
+  </div>
+</section>
+
+<footer>
+  <div class="container">Si llegaste hasta aqui, pues te esta gustando tu pagina?</div>
+</footer>
+
+<script>
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

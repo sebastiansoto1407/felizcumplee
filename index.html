@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>¡Feliz Cumple 20!</title>
+<meta name="description" content="Bienvenida al mini-sitio de cumpleaños — 20 años">
+<style>
+  :root{
+    --bgTop:#0f132a; --bgBot:#0b0e20;
+    --ink:#f7f8ff; --muted:#b9c0ff;
+    --border:rgba(255,255,255,.12);
+    --acc:#ff7ad9; --acc-2:#7ad8ff;
+    --glow:0 12px 32px rgba(122,216,255,.18);
+    --radius:16px; --radius-lg:26px; --max:1060px;
+  }
+  *{box-sizing:border-box; min-width:0}
+  html,body{height:100%}
+  body{
+    margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    color:var(--ink);
+    background: linear-gradient(180deg, var(--bgTop) 0%, var(--bgBot) 100%) fixed no-repeat;
+    overflow-x:hidden; -webkit-text-size-adjust:100%;
+  }
+  a{color:inherit; text-decoration:none}
+  .container{width:100%; max-width:var(--max); margin:0 auto; padding:0 18px}
+
+  .stars{
+    position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.4;
+    background-image:
+      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.33) 40%, transparent 41%),
+      radial-gradient(2px 2px at 80% 20%, rgba(255,255,255,.26) 40%, transparent 41%),
+      radial-gradient(2px 2px at 60% 80%, rgba(255,255,255,.22) 40%, transparent 41%),
+      radial-gradient(1.6px 1.6px at 30% 70%, rgba(255,255,255,.20) 40%, transparent 41%),
+      radial-gradient(1.6px 1.6px at 70% 60%, rgba(255,255,255,.20) 40%, transparent 41%);
+    animation: twinkle 9s linear infinite;
+    transform: translateZ(0); 
+  }
+  @keyframes twinkle{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+  header{
+    position:sticky; top:0; z-index:10;
+    backdrop-filter: blur(10px);
+    background: linear-gradient(180deg, rgba(14,18,36,.60), rgba(14,18,36,0));
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:60px;gap:8px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px;font-size:14px}
+  .badge{font-size:11px;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--acc),var(--acc-2));color:#101225}
+  .tagrow{display:flex;gap:8px;flex-wrap:wrap}
+  .tag{background:rgba(255,255,255,.06);border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:12px;color:#dfe3ff}
+
+  .hero{position:relative;z-index:1;padding: clamp(52px, 9vw, 110px) 0 28px;text-align:center}
+  .hero h1{margin:0;font-size: clamp(30px,6vw,60px);line-height:1.08;letter-spacing:.2px}
+  .sub{margin:10px auto 16px;color:var(--muted);font-size:clamp(14px,1.5vw,18px);max-width:720px}
+  
+  /* Seccion accesos */
+  section{padding:36px 0; position:relative}
+  #accesos::before{
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(255,255,255,.01), rgba(0,0,0,.01));
+    pointer-events:none; 
+  }
+  .section-title{ font-size: clamp(22px, 3.2vw, 34px); margin:0 0 8px 0; }
+  .section-desc{ color:var(--muted); margin:0 0 20px 0 }
+
+  .grid-links{ display:grid; gap:14px; grid-template-columns:1fr; }
+  @media(min-width:560px){ .grid-links{ grid-template-columns:repeat(2,1fr) } } 
+  @media(min-width:900px){ .grid-links{ grid-template-columns:repeat(3,1fr) } } 
+
+  .linkcard{
+    background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+    border:1px solid var(--border); 
+    border-radius:16px; padding:16px;
+    display:grid; grid-template-rows:auto 1fr; gap:6px;
+    transition: transform .15s ease, border-color .2s ease, box-shadow .2s ease;
+    isolation:isolate; 
+  }
+  .linkcard:hover{ transform:translateY(-4px); border-color:rgba(255,255,255,.22); box-shadow:var(--glow) }
+  .title{ font-weight:900; display:flex; align-items:center; gap:10px; }
+  .icon{
+    width:26px; height:26px; border-radius:8px; flex:0 0 26px;
+    background: linear-gradient(90deg, var(--acc-2), var(--acc));
+    display:grid; place-items:center; color:#0f1226; font-weight:900; font-size:14px;
+  }
+  .desc{ color:#cdd3ff; opacity:.9; font-size:14px; }
+
+  /* Reveal animation */
+  .reveal{ opacity:0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease }
+  .reveal.in{ opacity:1; transform: translateY(0)}
+
+  footer{ padding:38px 0 64px; color:#cdd3ff; opacity:.85; text-align:center; }
+  
+  @media(max-width:380px){
+    .container{ padding:0 14px }
+    .linkcard{ padding:14px; border-radius:14px }
+    .desc{ font-size:13px }
+  }
+
+  /* BOTÓN FLOTANTE SORPRESA 21 */
+  .fab-regalo {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    z-index: 9999;
+    background: linear-gradient(45deg, #ff0055, #ff7ad9, #00d2ff);
+    background-size: 200% 200%;
+    color: #ffffff;
+    padding: 16px 24px;
+    border-radius: 50px;
+    font-weight: 900;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 32px rgba(255, 122, 217, 0.6);
+    border: 2px solid rgba(255,255,255,0.4);
+    animation: pulsoMagico 2s infinite, moverFondo 3s infinite alternate;
+  }
+  .fab-regalo:hover {
+    transform: scale(1.1);
+  }
+
+  @keyframes pulsoMagico {
+    0% { transform: scale(1); box-shadow: 0 8px 32px rgba(255, 122, 217, 0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 12px 48px rgba(255, 122, 217, 0.9); }
+    100% { transform: scale(1); box-shadow: 0 8px 32px rgba(255, 122, 217, 0.4); }
+  }
+  @keyframes moverFondo {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+
+  @media(max-width:560px){
+    .fab-regalo {
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+      width: 90%;
+      justify-content: center;
+      animation: pulsoMagicoMovil 2s infinite, moverFondo 3s infinite alternate;
+    }
+    @keyframes pulsoMagicoMovil {
+      0% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.03); }
+      100% { transform: translateX(-50%) scale(1); }
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span class="badge">Edición especial</span>
+        <span>Celebramos tus 20 🎉</span>
+      </div>
+      <nav class="tagrow" aria-label="Secciones">
+        <a class="tag" href="#accesos">Accesos</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1 class="reveal">¡Bienvenida a los<strong> #20</strong>!<br>
+        <span style="font-weight:400">Un mini-sitio hecho solo para ti con mucho cariño</span>
+      </h1>
+      <p class="sub reveal">Hecho con mucho amor para mi bonita </p>
+    </div>
+  </section>
+
+  <section id="accesos">
+    <div class="container">
+      <h2 class="section-title reveal">Accesos principales</h2>
+      <p class="section-desc reveal">Navega por cada página :D</p>
+
+      <div class="grid-links">
+        <a class="linkcard reveal" href="razones.html">
+          <div class="title"><span class="icon">20</span>20 Razones</div>
+          <div class="desc">20 razones que me hacen quererte cada día más</div>
+        </a>
+
+        <a class="linkcard reveal" href="mensaje.html">
+          <div class="title"><span class="icon">💌</span>Mensajes</div>
+          <div class="desc">Mensajes que no celebran un día… celebran que existes.</div>
+        </a>
+
+        <a class="linkcard reveal" href="galeria.html">
+          <div class="title"><span class="icon">🖼️</span>Galería</div>
+          <div class="desc">Esta parte no solo muestra fotos también muestra cuánto significas para mí.</div>
+        </a>
+
+        <a class="linkcard reveal" href="infinito.html">
+          <div class="title"><span class="icon">📝</span>Infinito</div>
+          <div class="desc">Notas rápidas y recuerdos cortos.</div>
+        </a>
+
+        <a class="linkcard reveal" href="estrellas.html">
+          <div class="title"><span class="icon">⭐</span>Estrellas</div>
+          <div class="desc">Eres como el atardecer más bonito: llegas con calma, pintas todo de colores suaves.</div>
+        </a>
+
+        <a class="linkcard reveal" href="sorpresas.html">
+          <div class="title"><span class="icon">🎁</span>Sorpresa</div>
+          <div class="desc">Sorpresa que solo tú mereces descubrir</div>
+        </a>
+
+        <a class="linkcard reveal" href="audios.html">
+          <div class="title"><span class="icon">🎙️</span>Audios</div>
+          <div class="desc">Te dejo mi voz, porque hay cosas que solo se entienden cuando se escuchan con el corazón.</div>
+        </a>
+
+        <a class="linkcard reveal" href="musica.html">
+          <div class="title"><span class="icon">🎵</span>Musica</div>
+          <div class="desc">Canciones que hablan por mí cuando no sé cómo decirlo</div>
+        </a>
+
+        <a class="linkcard reveal" href="bonitos.html">
+          <div class="title"><span class="icon">🌷</span>Notitas de Sotito</div>
+          <div class="desc">Aquí verás algunas notas que nunca te mostré y algunas nuevas ;)</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">Hecho solo para ti ❤️</div>
+  </footer>
+
+  <!-- Botón Flotante de Supabase -->
+  <a href="regalo21.html" id="btnSorpresa21" class="fab-regalo">
+    <span>🎁</span> Haz click aquí para tu regalo 21
+  </a>
+
+  <!-- Importar Supabase -->
+  <!-- Importar Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    /* 1. Animaciones Reveal */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { 
+        if(e.isIntersecting){ 
+          e.target.classList.add('in'); 
+          io.unobserve(e.target);
+        } 
+      });
+    }, {threshold: .12});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* 2. Lógica Supabase Ultra Segura */
+    const SUPABASE_URL = 'https://wrfpnjsdjwotlzhguncj.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndyZnBuanNkandvdGx6aGd1bmNqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk4NjY1NTMsImV4cCI6MjEwNTQ0MjU1M30.zlk6zoH1UVQUvBUS9tk07tIHeHOgeiUjEp7d0FvdWwM';
+    
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const btnEspecial = document.getElementById('btnSorpresa21');
+    
+    if (btnEspecial) {
+      // Guardar el estado original
+      const textoOriginal = btnEspecial.innerHTML;
+
+      btnEspecial.addEventListener('click', async function(e) {
+        e.preventDefault(); 
+        
+        // 1. Evitar que ella le dé varios clics seguidos por accidente
+        if (btnEspecial.style.pointerEvents === 'none') return;
+        btnEspecial.style.pointerEvents = 'none';
+
+        const targetUrl = this.href;
+        
+        // Cambiar diseño a estado de carga
+        btnEspecial.innerHTML = "<span>⏳</span> Abriendo sorpresa...";
+
+        // Preparar fecha
+        const now = new Date();
+        const dias = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+        const diaSemana = dias[now.getDay()];
+        const fecha = now.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' });
+        const hora = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+        const stringRegistro = `${hora} del dia ${diaSemana} ${fecha}`;
+
+        try {
+          // 2. Await OBLIGA al código a detenerse hasta que la base de datos confirme la recepción
+          const { error } = await supabaseClient
+            .from('clics_regalo')
+            .insert([{ fecha_hora: stringRegistro, dispositivo: navigator.userAgent }]);
+          
+          if (error) console.error("Error de Supabase:", error);
+
+          // 3. Pausa forzada de 1 segundo para asegurar que la red completó la operación en móviles
+          await new Promise(resolve => setTimeout(resolve, 1000));
+
+        } catch (error) {
+          console.error("Error de conexión:", error);
+          await new Promise(resolve => setTimeout(resolve, 1000)); // Pausa igual si hay error
+        }
+
+        // 4. EL TRUCO CLAVE: Restaurar el botón JUSTO ANTES de cambiar de página.
+        // Cuando el celular la lleve a la otra página, guardará en su memoria caché (bfcache)
+        // esta vista del botón con su texto original restaurado.
+        btnEspecial.innerHTML = textoOriginal;
+        btnEspecial.style.pointerEvents = 'auto';
+
+        // 5. Redirigir de forma segura
+        window.location.href = targetUrl;
+      });
+
+      // Respaldo secundario estándar por si Safari se pone terco
+      window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+          btnEspecial.innerHTML = textoOriginal;
+          btnEspecial.style.pointerEvents = 'auto';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

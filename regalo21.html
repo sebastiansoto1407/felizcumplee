@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>¡Sorpresa en construcción! 🎁</title>
+<style>
+  :root {
+    --bgTop: #0f132a; 
+    --bgBot: #0b0e20;
+    --ink: #f7f8ff; 
+    --muted: #b9c0ff;
+    --acc: #ff7ad9; 
+    --acc-2: #00d2ff;
+    --glow: 0 12px 32px rgba(255, 122, 217, 0.25);
+  }
+  * { box-sizing: border-box; min-width: 0; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background: linear-gradient(180deg, var(--bgTop) 0%, var(--bgBot) 100%) fixed no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  a { text-decoration: none; }
+
+  /* Estrellas del fondo (mismo estilo que el index) */
+  .stars {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.5;
+    background-image:
+      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.33) 40%, transparent 41%),
+      radial-gradient(2px 2px at 80% 20%, rgba(255,255,255,.26) 40%, transparent 41%),
+      radial-gradient(2px 2px at 60% 80%, rgba(255,255,255,.22) 40%, transparent 41%),
+      radial-gradient(1.6px 1.6px at 30% 70%, rgba(255,255,255,.20) 40%, transparent 41%),
+      radial-gradient(1.6px 1.6px at 70% 60%, rgba(255,255,255,.20) 40%, transparent 41%);
+    animation: twinkle 9s linear infinite;
+  }
+  @keyframes twinkle { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+
+  /* Tarjeta central */
+  .card {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px 24px;
+    max-width: 480px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+    animation: aparecer 0.8s ease-out forwards;
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  @keyframes aparecer {
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  /* Ícono animado */
+  .icon-lock {
+    font-size: 50px;
+    margin-bottom: 10px;
+    display: inline-block;
+    animation: flotar 3s ease-in-out infinite;
+  }
+  @keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  h1 {
+    font-size: 26px;
+    margin: 0 0 12px;
+    background: linear-gradient(90deg, var(--acc), var(--acc-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+  }
+
+  p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 0 24px;
+  }
+
+  .highlight {
+    color: #fff;
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+    font-size: 15px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    border: 1px dashed rgba(255,255,255,0.2);
+  }
+
+  /* Contador */
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  .time-box {
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    width: 65px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--glow);
+  }
+  .time-box span {
+    font-size: 24px;
+    font-weight: 900;
+    color: #fff;
+  }
+  .time-box small {
+    font-size: 11px;
+    color: var(--acc-2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+    font-weight: bold;
+  }
+
+  /* Botón de regreso */
+  .btn {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--ink);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 12px 24px;
+    border-radius: 14px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Corazón latiendo */
+  .heart {
+    color: #ff0055;
+    display: inline-block;
+    animation: latido 1.2s infinite;
+  }
+  @keyframes latido {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+</style>
+</head>
+<body>
+
+  <div class="stars"></div>
+
+  <div class="card">
+    <div class="icon-lock"></div>
+    <h1>Ostiaaaaaaaa, me atrapaste haciendo tu pagina 2.0 pero aun no esta listo, favor de esperar un poco mas si? </h1>
+    <p>
+      Sé que tienes mucha curiosidad cof cof curiosa, pero esta sorpresa sigue en el horno <span class="heart"></span>.<br><br>
+      Te quiero muchísimo, pero las cosas más hermosas toman tiempo y vas a tener que esperar un poquito más para ver tu regalo jaja :)
+      <span class="highlight">Vuelve exactamente el:<br>Jueves 24/09/2026 a las 00:00:01</span>
+    </p>
+
+    <div class="countdown" id="countdown-container">
+      <div class="time-box">
+        <span id="dias">00</span>
+        <small>Días</small>
+      </div>
+      <div class="time-box">
+        <span id="horas">00</span>
+        <small>Horas</small>
+      </div>
+      <div class="time-box">
+        <span id="minutos">00</span>
+        <small>Min</small>
+      </div>
+      <div class="time-box">
+        <span id="segundos">00</span>
+        <small>Seg</small>
+      </div>
+    </div>
+
+    <a href="index.html" class="btn">Volver al inicio ⬅️</a>
+  </div>
+
+  <script>
+    // Fecha objetivo: Jueves 24 de Septiembre de 2026 a las 00:00:01
+    const countDownDate = new Date("Sep 24, 2026 00:00:01").getTime();
+
+    const x = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+
+      // Cálculos matemáticos para días, horas, minutos y segundos
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Mostrar resultados (añadiendo un 0 delante si es menor a 10)
+      document.getElementById("dias").innerText = days < 10 ? "0" + days : days;
+      document.getElementById("horas").innerText = hours < 10 ? "0" + hours : hours;
+      document.getElementById("minutos").innerText = minutes < 10 ? "0" + minutes : minutes;
+      document.getElementById("segundos").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+      // Si la cuenta regresiva termina, cambiamos el mensaje para que pueda entrar
+      if (distance < 0) {
+        clearInterval(x);
+        document.querySelector(".icon-lock").innerText = "🎉";
+        document.querySelector("h1").innerText = "¡Llegó el momento!";
+        document.querySelector("p").innerHTML = "¡Ya son tus 21, mi bonita! Todo está listo para ti <span class='heart'>❤️</span>.";
+        document.getElementById("countdown-container").style.display = "none";
+        
+        // Cambiar el botón para que ahora sí la deje pasar al regalo real
+        const btn = document.querySelector(".btn");
+        btn.innerText = "¡Abrir mi regalo 21! 🎁";
+        btn.style.background = "linear-gradient(45deg, #ff0055, #ff7ad9)";
+        btn.style.color = "white";
+        btn.style.border = "none";
+        btn.style.boxShadow = "0 8px 32px rgba(255, 122, 217, 0.6)";
+        // AQUÍ PONDRÍAS EL ENLACE AL REGALO REAL CUANDO LLEGUE EL DÍA
+        btn.href = "sorpresa21_real.html"; 
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

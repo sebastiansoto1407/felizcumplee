@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mensajes bonitos</title>
+<meta name="description" content="Notitas y mensajes cortos — cumple 20">
+<style>
+  :root{
+    --bgTop:#0f132a; --bgBot:#0b0e20;
+    --ink:#f7f8ff; --muted:#b9c0ff;
+    --border:rgba(255,255,255,.12);
+    --acc:#ff7ad9; --acc-2:#7ad8ff;
+    --glow:0 10px 28px rgba(122,216,255,.18);
+    --radius:16px; --radius-lg:26px; --max:1060px;
+
+    /* tints para notas */
+    --t-blue: rgba(122,216,255,.12);
+    --t-pink: rgba(255,122,217,.12);
+    --t-lilac: rgba(180,160,255,.14);
+  }
+  *{box-sizing:border-box; min-width:0}
+  html,body{height:100%}
+  body{
+    margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    color:var(--ink);
+    background: linear-gradient(180deg, var(--bgTop) 0%, var(--bgBot) 100%) fixed no-repeat;
+    overflow-x:hidden; -webkit-text-size-adjust:100%;
+  }
+  a{color:inherit; text-decoration:none}
+  .container{width:100%; max-width:var(--max); margin:0 auto; padding:0 18px}
+
+  /* Estrellitas (una capa para evitar banding) */
+  .stars{
+    position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.4;
+    background-image:
+      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.33) 40%, transparent 41%),
+      radial-gradient(2px 2px at 80% 20%, rgba(255,255,255,.26) 40%, transparent 41%),
+      radial-gradient(2px 2px at 60% 80%, rgba(255,255,255,.22) 40%, transparent 41%),
+      radial-gradient(1.6px 1.6px at 30% 70%, rgba(255,255,255,.20) 40%, transparent 41%),
+      radial-gradient(1.6px 1.6px at 70% 60%, rgba(255,255,255,.20) 40%, transparent 41%);
+    animation: twinkle 9s linear infinite;
+    transform: translateZ(0);
+  }
+  @keyframes twinkle{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:10;
+    backdrop-filter: blur(10px);
+    background: linear-gradient(180deg, rgba(14,18,36,.6), rgba(14,18,36,0));
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:60px;gap:8px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px}
+  .badge{font-size:11px;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--acc),var(--acc-2));color:#101225}
+  .tagrow{display:flex;gap:8px;flex-wrap:wrap}
+  .tag{background:rgba(255,255,255,.06);border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:12px;color:#dfe3ff}
+
+  /* Hero */
+  .hero{text-align:center;padding: clamp(52px,9vw,110px) 0 20px}
+  .hero h1{margin:0;font-size: clamp(30px,6vw,54px)}
+  .sub{margin:10px auto 16px;color:var(--muted);max-width:720px;font-size:clamp(14px,1.5vw,18px)}
+
+  /* Grid de notas */
+  section{padding:26px 0}
+  .grid{
+    display:grid; gap:14px;
+    grid-template-columns:1fr;                   /* móvil */
+  }
+  @media(min-width:560px){ .grid{ grid-template-columns:repeat(2,1fr) } }
+  @media(min-width:900px){ .grid{ grid-template-columns:repeat(3,1fr) } }
+
+  .note{
+    background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:14px 16px;
+    display:grid; gap:8px;
+    transition: transform .15s ease, box-shadow .15s ease, border-color .2s ease;
+    position:relative; overflow:hidden; isolation:isolate;
+  }
+  .note:hover{ transform: translateY(-4px); border-color: rgba(255,255,255,.22); box-shadow: var(--glow) }
+
+  /* Encabezado tipo “nota” con pastilla */
+  .kicker{
+    display:flex; align-items:center; gap:10px; font-weight:900;
+  }
+  .pill{
+    background:linear-gradient(90deg, var(--acc-2), var(--acc));
+    color:#0f1226; border-radius:999px; padding:6px 10px; font-size:12px; letter-spacing:.4px;
+  }
+  .title{ font-weight:900; font-size:15px }
+
+  /* Contenido de la nota: caja suave */
+  .paper{
+    background: radial-gradient(120% 120% at 10% 10%, var(--t-blue), transparent 70%),
+                radial-gradient(120% 120% at 90% 0%, var(--t-pink), transparent 70%),
+                var(--t-lilac);
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:12px;
+    padding:12px 14px;
+    color:#eaf0ff; line-height:1.6; font-size:14.8px;
+    box-shadow: inset 0 -1px 0 rgba(255,255,255,.06);
+  }
+  .paper a{ color:#cfe6ff; text-decoration:underline }
+
+  /* Check sutil al pie */
+  .foot{ color:#cdd3ff; opacity:.8; font-size:12.5px; display:flex; align-items:center; gap:6px }
+  .foot::before{ content:"✔"; opacity:.9 }
+
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  footer{padding:36px 0 60px;color:#cdd3ff;opacity:.85}
+  @media(max-width:380px){ .container{padding:0 14px} .note{padding:12px 14px} .paper{padding:10px 12px} }
+</style>
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span class="badge">Edición especial</span>
+        <span>Mensajes bonitos 🌷</span>
+      </div>
+      <nav class="tagrow"><a class="tag" href="index.html">← Inicio</a></nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Notitas para ti</h1>
+      <p class="sub"></p>
+    </div>
+  </section>
+
+  <!-- GRID DE NOTAS (edita los textos aquí) -->
+  <section>
+    <div class="container grid">
+
+      <article class="note reveal">
+        <div class="kicker"><span class="pill">Día especial</span><span class="title">Brillas</span></div>
+        <div class="paper">Tu sonrisa hace que todo se sienta más ligero. Gracias por la luz que compartes.</div>
+        <div class="foot">Notita Especial</div>
+      </article>
+
+      <article class="note reveal">
+        <div class="kicker"><span class="pill">Recuerdo</span><span class="title">Esa vez en…</span></div>
+        <div class="paper">Aquel brownie y las risas cuando me lo diste a mi cara. Fue perfecto.</div>
+        <div class="foot">Notita 782</div>
+      </article>
+
+      <article class="note reveal">
+        <div class="kicker"><span class="pill">Gratitud</span><span class="title">Por estar</span></div>
+        <div class="paper">Gracias por escuchar incluso cuando no digo nada. Eso vale oro.</div>
+        <div class="foot">Notita #¿?</div>
+      </article>
+
+      <article class="note reveal">
+        <div class="kicker"><span class="pill">Meta</span><span class="title">Este año</span></div>
+        <div class="paper">Que cumplas sueños nuevos y te sorprendas a ti misma muchas veces.</div>
+        <div class="foot">Notita #958</div>
+      </article>
+
+      <article class="note reveal">
+        <div class="kicker"><span class="pill">Recordatorio</span><span class="title">Eres suficiente</span></div>
+        <div class="paper">No tienes que demostrarle nada a nadie. Lo que eres ya es precioso.</div>
+        <div class="foot">Notita #007</div>
+      </article>
+
+      <article class="note reveal">
+        <div class="kicker"><span class="pill">Pequeña alegría</span><span class="title">ojitos</span></div>
+        <div class="paper">Cuando veo tus ojitos me enamoro mas de ti</div>
+        <div class="foot">Notita 242</div>
+      </article>
+
+      <article class="note reveal">
+        <div class="kicker"><span class="pill">Plan</span><span class="title">Helados</span></div>
+        <div class="paper">Pendiente: helado + paseo largo + fotos tontas (si fotos jaaj). Fecha: pronto.</div>
+        <div class="foot">Notita 382</div>
+      </article>
+
+      <article class="note reveal">
+        <div class="kicker"><span class="pill">Confidencia</span><span class="title">Mi favorita</span></div>
+        <div class="paper">Mi parte favorita del día es cuando apareces tú.</div>
+        <div class="foot">Notita 875</div>
+      </article>
+
+      <article class="note reveal">
+        <div class="kicker"><span class="pill">Cita</span><span class="title">Para ti</span></div>
+        <div class="paper">“Que nunca te falten ganas de intentarlo otra vez.”</div>
+        <div class="foot">Notita 37</div>
+      </article>
+
+      <article class="note reveal">
+  <div class="kicker"><span class="pill">Confianza</span><span class="title">Siempre cuentas</span></div>
+  <div class="paper">No importa la distancia o el tiempo, aquí tienes a alguien que te apoya.</div>
+  <div class="foot">Notita 85</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Recuerdo</span><span class="title">Momentos</span></div>
+  <div class="paper">Gracias por todos los momentos compartidos, siempre los guardo con cariño.</div>
+  <div class="foot">Notita 32</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Ánimo</span><span class="title">Fuerza</span></div>
+  <div class="paper">Si algún día dudas de ti, recuerda todo lo que has superado. Eres fuerte.</div>
+  <div class="foot">Notita 92</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Deseo</span><span class="title">Cosas lindas</span></div>
+  <div class="paper">Ojalá la vida te sorprenda con cosas bonitas, porque te las mereces.</div>
+  <div class="foot">Notita 67</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Gratitud</span><span class="title">Gracias</span></div>
+  <div class="paper">Gracias por ser parte de mi historia, de una u otra forma siempre te aprecio.</div>
+  <div class="foot">Notita 23</div>
+</article>
+      <article class="note reveal">
+        <div class="kicker"><span class="pill">amorrr</span><span class="title">AMOR</span></div>
+        <div class="paper">Vos sabesss que eres mi bonita???</div>
+        <div class="foot">Notita 56</div>
+      </article>
+      <article class="note reveal">
+        <div class="kicker"><span class="pill">Abrazo</span><span class="title">Siempre</span></div>
+        <div class="paper">Si el día se pone difícil, recuerda: aquí tienes un abrazo guardado.</div>
+        <div class="foot">Notita 970</div>
+      </article>
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Confidencia</span><span class="title">Lo pensé</span></div>
+  <div class="paper">Hoy te imaginé sonriendo y el día se volvió más amable.</div>
+  <div class="foot">Notita #1000</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Pequeña alegría</span><span class="title">Detalles</span></div>
+  <div class="paper">Cuando te emocionas por cosas simples, me recuerdas lo bonito de vivir.</div>
+  <div class="foot">Notita #1001</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Gratitud</span><span class="title">Tu forma</span></div>
+  <div class="paper">Gracias por ser tú, sin filtros ni máscaras. me inspira.</div>
+  <div class="foot">Notita #1002</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Plan</span><span class="title">Peli y manta</span></div>
+  <div class="paper">Idea ramdon: película cursi, manta compartida y comentarios xd. ¿Aceptas?</div>
+  <div class="foot">Notita #1003</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Recordatorio</span><span class="title">Tu tiempo</span></div>
+  <div class="paper">Quiero verte :(</div>
+  <div class="foot">Notita #1004</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Cita</span><span class="title">Para ti</span></div>
+  <div class="paper">“Aunque la vida cambie, siempre voy a desearte cosas lindas.”</div>
+  <div class="foot">Notita #1005</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Meta</span><span class="title">Pequeños logros</span></div>
+  <div class="paper">Cada paso que das, aunque parezca mínimo, merece celebración.</div>
+  <div class="foot">Notita #1006</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Día especial</span><span class="title">Hoy</span></div>
+  <div class="paper">Hoy es especial porque tú existes. Y eso ya cambia el mundo.</div>
+  <div class="foot">Notita #1007</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Recuerdo</span><span class="title">Tu mirada</span></div>
+  <div class="paper">Aquel momento en que me miraste como si entendieras todo. No lo olvido.</div>
+  <div class="foot">Notita #1008</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Abrazo</span><span class="title">Invisible</span></div>
+  <div class="paper">Aunque no esté cerca, este abrazo te sigue. Siempre.</div>
+  <div class="foot">Notita #1009</div>
+</article>
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Solo a ti</span><span class="title">Keyssi</span></div>
+  <div class="paper">Te amo.</div>
+  <div class="foot">Notita #111</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Pequeña alegría</span><span class="title">Tu voz</span></div>
+  <div class="paper">Hay algo en tu voz que calma, como si el mundo se hiciera más suave.</div>
+  <div class="foot">Notita #1011</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">TIERNA</span><span class="title">Por tu ternura</span></div>
+  <div class="paper">Amo cuando te veo y te veo como la persona mas tiernaaaa</div>
+  <div class="foot">Notita #1012</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Plan</span><span class="title">Caminata</span></div>
+  <div class="paper">Te propongo: caminar sin rumbo, hablar de todo y ser muy xd juntos</div>
+  <div class="foot">Notita #1013</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Recordatorio</span><span class="title">Tu valor</span></div>
+  <div class="paper">No olvides: lo que eres no necesita validación. Ya eres magia.</div>
+  <div class="foot">Notita #1014</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Cita</span><span class="title">De corazón</span></div>
+  <div class="paper">“Hay personas que son hogar y tu eres mi hogar”</div>
+  <div class="foot">Notita #1015</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Meta</span><span class="title">Tu luz</span></div>
+  <div class="paper">Que nunca se apague tu forma de ver lo bonito en lo cotidiano.</div>
+  <div class="foot">Notita #1016</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Día especial</span><span class="title">Hoy también</span></div>
+  <div class="paper">Hoy también mereces cosas lindas. Que te lleguen sin aviso.</div>
+  <div class="foot">Notita #1017</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">Recuerdo</span><span class="title">Tu risa</span></div>
+  <div class="paper">A veces me acuerdo de cómo te reíste ese día… y sonrío solo.</div>
+  <div class="foot">Notita #1018</div>
+</article>
+
+<article class="note reveal">
+  <div class="kicker"><span class="pill">muack</span><span class="title">Te super admiro</span></div>
+  <div class="paper">Te quiero, te adoro, te todo</div>
+  <div class="foot">Notita #1019</div>
+</article>
+      <!-- Duplica más “article.note” si necesitas más notitas -->
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">Hecho con 💖</div>
+  </footer>
+
+<script>
+/* Reveal on Scroll */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} })
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

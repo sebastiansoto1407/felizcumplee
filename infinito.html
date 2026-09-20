@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Infinito</title>
+<meta name="description" content="Gran final — Infinito de razones">
+<style>
+  :root{
+    --ink:#f7f8ff;
+    --pink:#ff7ad9; --blue:#7ad8ff; --gold:#ffd27a; --lilac:#c9a2ff; --mint:#8affc1;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;overflow:hidden;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--ink);background:#0b0f24}
+
+  /* Escena a pantalla completa */
+  .scene{
+    position:fixed; inset:0; overflow:hidden; isolation:isolate;
+    background:
+      radial-gradient(1600px 60% at 50% 105%, rgba(255,255,255,.05), transparent 65%) no-repeat,
+      linear-gradient(180deg, #101432 0%, #0b0f24 100%) fixed;
+  }
+
+  /* Aurora sedosa */
+  .aurora{
+    position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:
+      conic-gradient(from 180deg at 50% 70%, rgba(122,216,255,.18), rgba(201,162,255,.16), rgba(255,122,217,.16), transparent 70%);
+    filter: blur(36px) saturate(120%);
+    opacity:.45; animation: aurora 28s ease-in-out infinite alternate;
+    mask-image: radial-gradient(80% 60% at 50% 65%, #000 60%, transparent 80%);
+  }
+  @keyframes aurora{ 0%{transform:translateY(8px)} 100%{transform:translateY(-8px)} }
+
+  /* Vignette cinematográfica */
+  .scene::after{
+    content:""; position:absolute; inset:-10%;
+    background: radial-gradient(120% 120% at 50% 20%, transparent 60%, rgba(0,0,0,.28) 86%),
+                radial-gradient(120% 120% at 50% 110%, transparent 60%, rgba(0,0,0,.40) 86%);
+    pointer-events:none; z-index:30;
+  }
+
+  /* Header: único botón */
+  header{
+    position:absolute; inset:0 0 auto 0; z-index:40;
+    display:flex; justify-content:flex-end; padding:10px 16px;
+    background:linear-gradient(180deg, rgba(6,9,20,.65), rgba(6,9,20,0));
+    backdrop-filter: blur(8px); font-weight:800;
+  }
+  header a{
+    color:var(--ink); text-decoration:none; font-size:14px;
+    padding:6px 12px; border:1px solid rgba(255,255,255,.25); border-radius:999px;
+  }
+
+  /* Mensaje central */
+  .center{
+    position:absolute; inset:0; z-index:35; display:grid; place-items:center; pointer-events:none;
+    text-align:center; padding:18px;
+  }
+  .h1{
+    margin:0; font-size:clamp(28px,6vw,54px); line-height:1.15;
+    background:linear-gradient(90deg,var(--pink),var(--blue),var(--gold));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    text-shadow:0 10px 32px rgba(122,216,255,.18);
+  }
+  .sub{
+    margin-top:10px; color:#dfe6ff; opacity:.92; font-size:clamp(14px,2.3vw,18px)
+  }
+
+  /* Capas canvas */
+  canvas{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none }
+  #stars{ z-index:0 }           /* estrellas de fondo */
+  #constel{ z-index:2 }         /* constelaciones */
+  #infinity{ z-index:3 }        /* trayectoria del ∞ y partículas */
+
+  /* Frase chispa al click */
+  .spark{
+    position:absolute; z-index:50; font-size:14px; pointer-events:none; white-space:nowrap;
+    animation: float 1.8s ease forwards;
+    background:linear-gradient(90deg,var(--pink),var(--blue),var(--gold));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    text-shadow:0 0 18px rgba(255,255,255,.25);
+  }
+  @keyframes float{ to{ transform: translateY(-40px); opacity:0 } }
+</style>
+</head>
+<body>
+  <div class="scene" id="scene">
+    <div class="aurora"></div>
+
+    <canvas id="stars"></canvas>
+    <canvas id="constel"></canvas>
+    <canvas id="infinity"></canvas>
+
+    <header><a href="index.html">← Volver al inicio</a></header>
+
+    <div class="center">
+      <div>
+        <h1 class="h1">Las razones nunca acaban</h1>
+        <p class="sub">Siempre habrá más motivos para celebrarte ✨</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+/* ========= Utilidades ========= */
+const DPR = Math.min(window.devicePixelRatio || 1, 2);
+const resizeCV = (cv)=>{ cv.width = Math.floor(cv.clientWidth * DPR); cv.height = Math.floor(cv.clientHeight * DPR); };
+
+/* ========= Estrellas de fondo (titilar) ========= */
+const starsCV = document.getElementById('stars');
+const sctx = starsCV.getContext('2d');
+function initStars(){
+  resizeCV(starsCV);
+  const W=starsCV.width,H=starsCV.height;
+  const N = Math.floor((W*H)/25000);
+  const stars=[];
+  for(let i=0;i<N;i++){
+    stars.push({x:Math.random()*W, y:Math.random()*H*0.95, r:Math.random()*1.8+0.4, a:Math.random(), s:Math.random()*0.02+0.005});
+  }
+  (function loop(){
+    sctx.clearRect(0,0,W,H);
+    sctx.globalCompositeOperation='lighter';
+    for(const st of stars){
+      st.a+=st.s; const tw=(Math.sin(st.a)+1)/2;
+      sctx.globalAlpha=0.4+tw*0.6;
+      sctx.fillStyle='#fff'; sctx.beginPath(); sctx.arc(st.x,st.y,st.r*DPR,0,Math.PI*2); sctx.fill();
+    }
+    requestAnimationFrame(loop);
+  })();
+}
+initStars();
+
+/* ========= Constelaciones que se dibujan ========= */
+const constCV = document.getElementById('constel');
+const cctx = constCV.getContext('2d');
+function initConstellations(){
+  resizeCV(constCV);
+  const W=constCV.width,H=constCV.height;
+  // puntos base (tres constelaciones suaves)
+  const makeNodes = (cx,cy,spread,n) => Array.from({length:n},()=>({x:cx + (Math.random()-0.5)*spread, y:cy + (Math.random()-0.5)*spread}));
+  const C1 = makeNodes(W*0.22,H*0.28,180*DPR,8);
+  const C2 = makeNodes(W*0.78,H*0.25,160*DPR,7);
+  const C3 = makeNodes(W*0.55,H*0.60,200*DPR,9);
+  const groups=[C1,C2,C3];
+  let progress=0;
+
+  (function draw(){
+    resizeCV(constCV);
+    const w=constCV.width,h=constCV.height; cctx.clearRect(0,0,w,h);
+    cctx.globalCompositeOperation='lighter';
+    cctx.lineWidth=1.4*DPR; cctx.strokeStyle='rgba(200,215,255,.55)';
+
+    progress = Math.min(progress + 0.0065, 1); // velocidad de dibujo
+    groups.forEach((G,gi)=>{
+      // dibuja líneas entre vecinos más cercanos
+      for(let i=0;i<G.length;i++){
+        for(let j=i+1;j<G.length;j++){
+          const dx=G[i].x-G[j].x, dy=G[i].y-G[j].y, d=Math.hypot(dx,dy);
+          if(d<160*DPR){
+            cctx.globalAlpha = 0.08 + 0.22 * progress;
+            cctx.beginPath(); cctx.moveTo(G[i].x,G[i].y); cctx.lineTo(G[j].x,G[j].y); cctx.stroke();
+          }
+        }
+      }
+      // estrellas
+      for(const p of G){
+        cctx.globalAlpha = 0.4 + 0.6*progress;
+        cctx.fillStyle='#fff'; cctx.beginPath(); cctx.arc(p.x,p.y,1.8*DPR,0,Math.PI*2); cctx.fill();
+      }
+    });
+    requestAnimationFrame(draw);
+  })();
+}
+initConstellations();
+
+/* ========= Símbolo ∞ con partículas ========= */
+const infCV = document.getElementById('infinity');
+const ictx = infCV.getContext('2d');
+
+function initInfinity(){
+  resizeCV(infCV);
+  const W=infCV.width,H=infCV.height;
+  const cx=W/2, cy=H/2;
+  const scale = Math.min(W,H)*0.22; // tamaño del ∞ según pantalla
+
+  // Paramétricas del ∞ (lemniscata tipo Bernoulli: (x^2 + y^2)^2 = a^2(x^2 - y^2))
+  const A = scale;
+
+  function pointAt(t){
+    // t en [-π, π]; suavizamos cerca de ±π/2
+    const s = Math.sin(t), c = Math.cos(t);
+    const denom = 1 + s*s;
+    const x = (A * Math.SQRT1_2 * Math.SQRT2) * (c / denom);
+    const y = (A * Math.SQRT1_2 * Math.SQRT2) * (s * c / denom);
+    return {x: cx + x, y: cy + y};
+  }
+
+  // Partículas que corren por el ∞
+  const colors=['#ff7ad9','#7ad8ff','#ffd27a','#c9a2ff','#8affc1'];
+  const particles = Array.from({length:140},(_,i)=>({
+    t: Math.random()*Math.PI*2,
+    sp: 0.012 + Math.random()*0.02,
+    col: colors[(Math.random()*colors.length)|0],
+    off: (Math.random()-0.5)*4*DPR
+  }));
+
+  let trail = []; // para glow de rastro
+
+  (function loop(){
+    resizeCV(infCV);
+    const w=infCV.width,h=infCV.height;
+    ictx.clearRect(0,0,w,h);
+
+    // Trazo base del ∞ (línea sutil)
+    ictx.save();
+    ictx.globalCompositeOperation='lighter';
+    ictx.strokeStyle='rgba(200,215,255,.18)';
+    ictx.lineWidth=1.2*DPR;
+    ictx.beginPath();
+    for(let i=0;i<=360;i++){
+      const t=(i/360)*Math.PI*2;
+      const p=pointAt(t);
+      if(i===0) ictx.moveTo(p.x,p.y); else ictx.lineTo(p.x,p.y);
+    }
+    ictx.closePath(); ictx.stroke();
+    ictx.restore();
+
+    // Partículas
+    particles.forEach(p=>{
+      p.t += p.sp;
+      const pos = pointAt(p.t);
+      const next = pointAt(p.t+0.02);
+      const ang = Math.atan2(next.y-pos.y, next.x-pos.x);
+      const px = pos.x + Math.cos(ang+Math.PI/2)*p.off;
+      const py = pos.y + Math.sin(ang+Math.PI/2)*p.off;
+
+      // cola
+      const grad = ictx.createRadialGradient(px,py,0,px,py,10*DPR);
+      grad.addColorStop(0, p.col);
+      grad.addColorStop(1, p.col+'00');
+      ictx.fillStyle=grad; ictx.globalAlpha=.9;
+      ictx.beginPath(); ictx.arc(px,py,1.8*DPR,0,Math.PI*2); ictx.fill();
+
+      // apilar rastro
+      trail.push({x:px,y:py,col:p.col,life:26});
+    });
+
+    // difuminar rastro
+    const newTrail=[];
+    for(const t of trail){
+      t.life-=1;
+      if(t.life>0){
+        ictx.globalAlpha = t.life/26;
+        ictx.fillStyle = t.col;
+        ictx.shadowColor = t.col;
+        ictx.shadowBlur = 14*DPR*(t.life/26);
+        ictx.beginPath(); ictx.arc(t.x,t.y,1.4*DPR,0,Math.PI*2); ictx.fill();
+        newTrail.push(t);
+      }
+    }
+    trail=newTrail;
+
+    requestAnimationFrame(loop);
+  })();
+}
+initInfinity();
+
+/* ========= Sparkle de texto al clic ========= */
+addEventListener('click',(e)=>{
+  const s=document.createElement('div');
+  s.className='spark';
+  s.textContent='∞ Razones';
+  s.style.left=(e.clientX-24)+'px';
+  s.style.top=(e.clientY-12)+'px';
+  document.getElementById('scene').appendChild(s);
+  setTimeout(()=>s.remove(), 1800);
+},{passive:true});
+
+/* ========= Reajustes on resize ========= */
+addEventListener('resize', ()=>{
+  initStars();    // re-seedea por densidad
+  initConstellations();
+  initInfinity();
+},{passive:true});
+</script>
+</body>
+</html>

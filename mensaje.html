@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mensajes</title>
+<meta name="description" content="Mensajes bonitos de cumpleaños — 20 años">
+<style>
+  /* ===== Tema base consistente con index ===== */
+  :root{
+    --bgTop:#0f132a; --bgBot:#0b0e20;
+    --ink:#f7f8ff; --muted:#b9c0ff;
+    --border:rgba(255,255,255,.12);
+    --acc:#ff7ad9; --acc-2:#7ad8ff; --glow:0 12px 32px rgba(122,216,255,.18);
+    --radius:16px; --radius-lg:26px; --max:1060px;
+  }
+  *{box-sizing:border-box; min-width:0}
+  html,body{height:100%}
+  body{
+    margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    color:var(--ink);
+    /* Fondo uniforme SIN cortes visibles */
+    background: linear-gradient(180deg, var(--bgTop) 0%, var(--bgBot) 100%) no-repeat fixed;
+    overflow-x:hidden; -webkit-text-size-adjust:100%;
+  }
+  a{color:inherit; text-decoration:none}
+  .container{width:100%; max-width:var(--max); margin:0 auto; padding:0 18px}
+
+  /* Estrellitas (una sola capa para evitar bandas) */
+  .stars{
+    position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.4;
+    background-image:
+      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.33) 40%, transparent 41%),
+      radial-gradient(2px 2px at 80% 20%, rgba(255,255,255,.26) 40%, transparent 41%),
+      radial-gradient(2px 2px at 60% 80%, rgba(255,255,255,.22) 40%, transparent 41%),
+      radial-gradient(1.6px 1.6px at 30% 70%, rgba(255,255,255,.20) 40%, transparent 41%),
+      radial-gradient(1.6px 1.6px at 70% 60%, rgba(255,255,255,.20) 40%, transparent 41%);
+    animation: twinkle 9s linear infinite;
+  }
+  @keyframes twinkle{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:10;
+    backdrop-filter: blur(10px);
+    background: linear-gradient(180deg, rgba(14,18,36,.6), rgba(14,18,36,0));
+    /* sin borde para evitar líneas */
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:60px;gap:8px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px;font-size:14px}
+  .badge{font-size:11px;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--acc),var(--acc-2));color:#101225}
+  .tagrow{display:flex;gap:8px;flex-wrap:wrap}
+  .tag{background:rgba(255,255,255,.06);border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:12px;color:#dfe3ff}
+
+  /* Hero con typewriter */
+  .hero{position:relative;z-index:1;padding: clamp(52px,9vw,110px) 0 8px;text-align:center}
+  .title{
+    display:inline-block;margin:0 auto;
+    font-size: clamp(30px,6vw,60px); line-height:1.08; letter-spacing:.2px;
+    white-space:nowrap; border-right:2px solid rgba(255,255,255,.7);
+    overflow:hidden; max-width:100%;
+    animation: typing 3.2s steps(28,end), caret 700ms step-end infinite;
+  }
+  @keyframes typing{from{width:0}to{width:100%}}
+  @keyframes caret{50%{border-color:transparent}}
+  .sub{margin:10px auto 16px;color:var(--muted);font-size:clamp(14px,1.5vw,18px);max-width:720px}
+
+  /* Grid de 6 tarjetas */
+  section{padding:26px 0}
+  .grid{
+    display:grid; gap:14px;
+    grid-template-columns:1fr;
+  }
+  @media(min-width:560px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+    border:1px solid var(--border);
+    border-radius:16px; padding:16px;
+    display:grid; gap:8px; position:relative;
+    transition: transform .15s ease, border-color .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{ transform: translateY(-4px); border-color: rgba(255,255,255,.22); box-shadow: var(--glow) }
+  .who{font-weight:900;display:flex;align-items:center;gap:10px}
+  .icon{width:26px;height:26px;border-radius:8px;flex:0 0 26px;background:linear-gradient(90deg,var(--acc-2),var(--acc));display:grid;place-items:center;color:#0f1226;font-weight:900;font-size:14px}
+  .msg{color:#e9ecff;opacity:.95;line-height:1.6}
+  .foot{color:#cdd3ff;opacity:.75;font-size:13px}
+
+  /* Carta LARGA (mensaje grande) */
+  .letter-wrap{padding-top:6px}
+  .letter{
+    margin:20px auto 0; max-width:880px;
+    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    border:1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: clamp(16px,4vw,28px);
+    box-shadow: var(--glow);
+  }
+  .letter h2{
+    margin:0 0 8px 0; font-size: clamp(22px,3vw,30px);
+    background: linear-gradient(90deg,var(--acc),var(--acc-2));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .letter p{
+    margin:0 0 14px 0; color:#eef1ff; opacity:.95; line-height:1.8;
+    font-size: clamp(15px, 1.6vw, 18px);
+  }
+
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  /* Footer sin borde (para evitar “línea”) */
+  footer{padding:36px 0 60px;color:#cdd3ff;opacity:.85}
+  @media(max-width:380px){
+    .container{padding:0 14px}
+    .card{padding:14px;border-radius:14px}
+    .letter{padding:18px}
+  }
+</style>
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span class="badge">Edición especial</span>
+        <span>Mensajes 💌</span>
+      </div>
+      <nav class="tagrow" aria-label="Nav">
+        <a class="tag" href="index.html">← Volver al inicio</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1 class="title">Para ti :D </h1>
+    </div>
+  </section>
+
+  <!-- 6 tarjetas -->
+  <section>
+    <div class="container grid">
+      <article class="card reveal">
+        <div class="who"><span class="icon">💖</span>De yo para tu</div>
+        <p class="msg">Gracias por tu amistad paciente, por tus mensajes que desordena mis días y por tu forma de mirar el mundo, Eres muy especial.</p>
+        <div class="foot">Hoy y siempre, ¡feliz #20!</div>
+      </article>
+
+      <article class="card reveal">
+        <div class="who"><span class="icon">✨</span>Brillas</div>
+        <p class="msg">Tu como persona brillas, eres esa estrella que brilla mas en las noches, esa estrella que veo siempre cuando no duermo, tu hermosa e intensa luz que adoro demasiado</p>
+        <div class="foot">Te adoro mucho</div>
+      </article>
+
+      <article class="card reveal">
+        <div class="who"><span class="icon">🌷</span>Recordatorio</div>
+        <p class="msg">Eres suficiente, tal como eres. No por lo que haces, sino por lo que llevas dentro. Que nunca lo olvides, incluso en los días nublados.</p>
+        <div class="foot">Con cariño</div>
+      </article>
+
+      <article class="card reveal">
+        <div class="who"><span class="icon">🌟</span>Deseo</div>
+        <p class="msg">Que este año encuentres caminos nuevos, gente bonita y un motivo diario para sonreír. Que los planes salgan y las fiestas tambien sumen xd</p>
+        <div class="foot">A tu ritmo</div>
+      </article>
+
+      <article class="card reveal">
+        <div class="who"><span class="icon">🫶</span>Gracias</div>
+        <p class="msg">Por las charlas largas, las trasnochadas chistosas. La vida contigo es más liviana y más divertida.</p>
+        <div class="foot">Siempre estare aqui</div>
+      </article>
+
+      <article class="card reveal">
+        <div class="who"><span class="icon">💫</span>Promesa</div>
+        <p class="msg">Voy a celebrar cada uno de tus logros como si fueran míos. Porque verte crecer también me hace crecer.</p>
+        <div class="foot">Vamos por nuestros titulos de ingenieros si?</div>
+      </article>
+    </div>
+
+    <!-- Mensaje largo (carta) -->
+    <div class="container letter-wrap">
+      <div class="letter reveal">
+        <h2>Mi mensaje para ti</h2>
+        <p>Bueno y llego el dia no? quieres que te diga la verdad? esta pagina que te lo hice lo llevo haciendo desde que hablamos de nuevo, se siente bonito hacer estas paginas para alguien que quiero tanto, que adoro tanto a una personita que esta cumpliendo 20 años ya!!! jajaja, quiero que sepas Keyssi que cada que me necesites yo estare ahi, en cualquier momento estare para ti y te estare apoyando en todo, sos mi bonita, ese apodo tan bonito y tan unico que solo a ti puedo decirte, me gusta que seamos randoms los 2, me gusta contarte mis dias, me gusta hacerte renegar, me gusta todo contigo, enserio no sabes cuanto te adoro y te quiero, re cursi pero es la verdad, enserio quiero decirte tantas cosas jaja pero que no puedo expresar, vos eres mi mas bonito amor si? tipo me gusta ser yo mismo cuando estoy contigo, amo nuestros momentos de locura, cada que te veo me doy cuenta lo afortunado que soy, enserio soy muy afortunado de conocerte, eres esa personita unica, adoro todo de ti, sabes todo de mi, sabes lo que me gusta, lo que no me gusta, sabes hasta lo mas profundo de mi y pues amo que solo seas tu la que sabe todo de mi, cada dia que pasa soy mas feliz de tenerte, sonare muy repetitivo pero te quiero, te adoro un monton, te re adoro, quiero estar para ti en todo, no importa cuantos años pasen, cuantas cosas cambien o bueno lo randoms que somos los 2 que de cuantas locuras vivamos, mi cariño por vos va a seguir intacto y eso seguira creciendo con cada risa, cada mirada, cada recuerdo, cada todo, vos sabes que si pudiera regalarte algo mas que esta pagina, yo te daria un pedacito de mi alma, en cada detalle que puse aqui, todo esto no es solo diseño y codigo, es mi forma de decirte que te quiero sin que se me escape nada, si pudiera hacer un commit de todo lo que siento por vos, seria un push eterno al repositorio de tu corazon y sinceramente no habria un rollback posible, porque cada version contigo es mejor que la anterior, te dejo como tarea eso para que entiendas jaja mua, gracias por todo lo que hiciste por mi en 2022, gracias por haberme cuidado en mi momento mas bajo y eso que aun me cuidas, lo valoro mucho, me gusta que sigamos hablando, que me hayas manifestado¿? no lo se pero me gusta y eso me encanta hablar otra vez contigo, sinceramente vos te llevaste una parte de mi corazon y ahh la verdad me gusta que seas solo vos que hayas hecho eso  </p>
+        <p>Deseo que este año te sorprenda con días tranquilos, objetivos cumplidos y personas que te abracen el alma. Que encuentres tiempo para ti, para tus sueños y para seguir descubriéndote.</p>
+        <p>Gracias por existir, por tu amistad y por la luz que pones en mi vida. Te celebro hoy y cada día. Feliz cumpleaños.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">Hecho solo para ti ❤️ </div>
+  </footer>
+
+<script>
+/* Reveal on Scroll */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* Confetti ligero al cargar */
+(function confetti(){
+  const EMIT=24, LIFE=2400, container=document.body;
+  for(let i=0;i<EMIT;i++){
+    const s=document.createElement('div');
+    s.textContent=Math.random()<0.5?'💖':'✨';
+    Object.assign(s.style,{
+      position:'fixed', left:(Math.random()*100)+'vw', top:'-10vh',
+      fontSize:(18+Math.random()*14)+'px', zIndex:5, opacity:.96,
+      transition:`transform ${1.4+Math.random()*1.2}s cubic-bezier(.2,.6,.2,1), opacity .6s ease`
+    });
+    container.appendChild(s);
+    requestAnimationFrame(()=>{ s.style.transform=`translateY(110vh) rotate(${360+Math.random()*360}deg)`; s.style.opacity=.85; });
+    setTimeout(()=>s.remove(), LIFE+Math.random()*800);
+  }
+})();
+</script>
+</body>
+</html>

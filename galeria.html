@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Galería</title>
+<meta name="description" content="Galería de fotos — cumple 20">
+<style>
+  :root{
+    --bgTop:#0f132a; --bgBot:#0b0e20;
+    --ink:#f7f8ff; --muted:#b9c0ff;
+    --border:rgba(255,255,255,.12);
+    --acc:#ff7ad9; --acc-2:#7ad8ff;
+    --glow:0 12px 32px rgba(122,216,255,.18);
+    --radius:16px; --radius-lg:26px; --max:1060px;
+  }
+  *{box-sizing:border-box; min-width:0}
+  html,body{height:100%}
+  body{
+    margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    color:var(--ink);
+    background:linear-gradient(180deg,var(--bgTop) 0%,var(--bgBot) 100%) fixed no-repeat;
+    overflow-x:hidden; -webkit-text-size-adjust:100%;
+  }
+  a{color:inherit; text-decoration:none}
+  .container{width:100%; max-width:var(--max); margin:0 auto; padding:0 18px}
+
+  /* Estrellitas */
+  .stars{
+    position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.4;
+    background-image:
+      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.33) 40%, transparent 41%),
+      radial-gradient(2px 2px at 80% 20%, rgba(255,255,255,.26) 40%, transparent 41%),
+      radial-gradient(2px 2px at 60% 80%, rgba(255,255,255,.22) 40%, transparent 41%),
+      radial-gradient(1.6px 1.6px at 30% 70%, rgba(255,255,255,.20) 40%, transparent 41%),
+      radial-gradient(1.6px 1.6px at 70% 60%, rgba(255,255,255,.20) 40%, transparent 41%);
+    animation: twinkle 9s linear infinite;
+  }
+  @keyframes twinkle{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+/* Botón estilo */
+.cta-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  padding: 10px;
+}
+
+.btn-link{
+  font-size: 16px;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, var(--acc), var(--acc-2));
+  color: #111326;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: var(--glow);
+  transition: transform 0.15s ease;
+  text-align: center;
+}
+
+.btn-link:hover{
+  transform: translateY(-4px);
+}
+
+@media (max-width: 560px) {
+  .btn-link {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:10;
+    backdrop-filter:blur(10px);
+    background:linear-gradient(180deg,rgba(14,18,36,.6),rgba(14,18,36,0));
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:60px;gap:8px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px}
+  .badge{font-size:11px;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--acc),var(--acc-2));color:#101225}
+  .tagrow{display:flex;gap:8px;flex-wrap:wrap}
+  .tag{background:rgba(255,255,255,.06);border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:12px;color:#dfe3ff}
+
+  /* Hero */
+  .hero{text-align:center;padding: clamp(52px,9vw,110px) 0 24px}
+  .hero h1{margin:0;font-size: clamp(30px,6vw,54px)}
+  .sub{margin:10px auto 16px;color:var(--muted);max-width:720px;font-size:clamp(14px,1.5vw,18px)}
+
+  /* Galería grid */
+  section{padding:26px 0}
+  .grid{
+    display:grid; gap:18px;
+    grid-template-columns:1fr;
+  }
+  @media(min-width:560px){ .grid{ grid-template-columns:repeat(2,1fr) } }
+  @media(min-width:900px){ .grid{ grid-template-columns:repeat(3,1fr) } }
+
+  .photo-card{
+    background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03));
+    border:1px solid var(--border);
+    border-radius:16px; overflow:hidden;
+    transition:transform .2s ease,box-shadow .2s ease;
+    display:flex; flex-direction:column;
+  }
+  .photo-card:hover{ transform:translateY(-4px); box-shadow:var(--glow) }
+  .photo-card img{
+    width:100%; height:220px; object-fit:cover;
+    display:block;
+  }
+  .caption{
+    padding:12px 14px; font-size:14.5px; color:#e9ecff; opacity:.95;
+    border-top:1px solid rgba(255,255,255,.06);
+    line-height:1.5;
+  }
+
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  footer{padding:36px 0 60px;color:#cdd3ff;opacity:.85}
+</style>
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div>
+
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <span class="badge">Edición especial</span>
+      <span>Galería 📸</span>
+    </div>
+    <nav class="tagrow"><a class="tag" href="index.html">← Inicio</a></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Frases para vos</h1>
+    <p class="sub"></p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="grid gallery-grid">
+      <!-- FOTO 1 -->
+      <figure class="photo-card reveal">
+        <img src="foto1.jpg" alt="Momento 1" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 2 -->
+      <figure class="photo-card reveal">
+        <img src="foto2.jpg" alt="Momento 2" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 3 -->
+      <figure class="photo-card reveal">
+        <img src="foto3.jpg" alt="Momento 3" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 4 -->
+      <figure class="photo-card reveal">
+        <img src="foto4.jpg" alt="Momento 4" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 5 -->
+      <figure class="photo-card reveal">
+        <img src="foto5.jpg" alt="Momento 5" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 6 -->
+      <figure class="photo-card reveal">
+        <img src="foto6.jpg" alt="Momento 6" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 7 -->
+      <figure class="photo-card reveal">
+        <img src="foto7.jpg" alt="Momento 7" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 8 -->
+      <figure class="photo-card reveal">
+        <img src="foto8.jpg" alt="Momento 8" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 9 -->
+      <figure class="photo-card reveal">
+        <img src="foto9.jpg" alt="Momento 9" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 10 -->
+      <figure class="photo-card reveal">
+        <img src="foto10.jpg" alt="Momento 10" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 11 -->
+      <figure class="photo-card reveal">
+        <img src="foto11.jpg" alt="Momento 11" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 12 -->
+      <figure class="photo-card reveal">
+        <img src="foto12.jpg" alt="Momento 12" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 13 -->
+      <figure class="photo-card reveal">
+        <img src="foto13.jpg" alt="Momento 13" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 14 -->
+      <figure class="photo-card reveal">
+        <img src="foto42.jpg" alt="Momento 14" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 15 -->
+      <figure class="photo-card reveal">
+        <img src="foto15.jpg" alt="Momento 15" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 16 -->
+      <figure class="photo-card reveal">
+        <img src="foto16.jpg" alt="Momento 16" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 17 -->
+      <figure class="photo-card reveal">
+        <img src="foto17.jpg" alt="Momento 17" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 18 -->
+      <figure class="photo-card reveal">
+        <img src="foto55.jpg" alt="Momento 18" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 19 -->
+      <figure class="photo-card reveal">
+        <img src="foto54.jpg" alt="Momento 19" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 20 -->
+      <figure class="photo-card reveal">
+        <img src="foto20.jpg" alt="Momento 20" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 21 -->
+      <figure class="photo-card reveal">
+        <img src="foto21.jpg" alt="Momento 21" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 22 -->
+      <figure class="photo-card reveal">
+        <img src="foto53.jpg" alt="Momento 22" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 23 -->
+      <figure class="photo-card reveal">
+        <img src="foto23.jpg" alt="Momento 23" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 24 -->
+      <figure class="photo-card reveal">
+        <img src="foto52.jpg" alt="Momento 24" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 25 -->
+      <figure class="photo-card reveal">
+        <img src="foto25.jpg" alt="Momento 25" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 26 -->
+      <figure class="photo-card reveal">
+        <img src="foto26.jpg" alt="Momento 26" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 27 -->
+      <figure class="photo-card reveal">
+        <img src="foto27.jpg" alt="Momento 27" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 28 -->
+      <figure class="photo-card reveal">
+        <img src="foto28.jpg" alt="Momento 28" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 29 -->
+      <figure class="photo-card reveal">
+        <img src="foto29.jpg" alt="Momento 29" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 30 -->
+      <figure class="photo-card reveal">
+        <img src="foto47.jpg" alt="Momento 30" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 31 -->
+      <figure class="photo-card reveal">
+        <img src="foto51.jpg" alt="Momento 31" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 32 -->
+      <figure class="photo-card reveal">
+        <img src="foto32.jpg" alt="Momento 32" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 33 -->
+      <figure class="photo-card reveal">
+        <img src="foto33.jpg" alt="Momento 33" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 34 -->
+      <figure class="photo-card reveal">
+        <img src="foto34.jpg" alt="Momento 34" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 35 -->
+      <figure class="photo-card reveal">
+        <img src="foto35.jpg" alt="Momento 35" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 36 -->
+      <figure class="photo-card reveal">
+        <img src="foto36.jpg" alt="Momento 36" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 37 -->
+      <figure class="photo-card reveal">
+        <img src="foto37.jpg" alt="Momento 37" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 38 -->
+      <figure class="photo-card reveal">
+        <img src="foto38.jpg" alt="Momento 38" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 39 -->
+      <figure class="photo-card reveal">
+        <img src="foto39.jpg" alt="Momento 39" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 40 -->
+      <figure class="photo-card reveal">
+        <img src="foto46.jpg" alt="Momento 40" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+
+      <!-- FOTO 41 -->
+      <figure class="photo-card reveal">
+        <img src="foto41.jpg" alt="Momento 41" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+<figure class="photo-card reveal">
+        <img src="foto48.jpg" alt="Momento 42" loading="lazy" />
+        <figcaption class="caption"></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<!-- Botón de acceso a otra página web -->
+<div class="cta-button">
+  <a href="whats.html" target="_blank" class="btn-link">
+    Visita nuestra página especial
+  </a>
+</div>
+
+<footer>
+  <div class="container">Hecho con 💖</div>
+</footer>
+
+<script>
+/* Reveal on Scroll */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
