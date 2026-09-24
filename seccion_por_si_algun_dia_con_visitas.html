@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Por si algún día... 🤍</title>
+
+  <style>
+    /* =========================================================
+       SECCIÓN FINAL — "POR SI ALGÚN DÍA..."
+       Todo está prefijado con invite- para evitar choques
+       con el resto de tu página.
+    ========================================================= */
+
+    :root{
+      --invite-bg:#f6f1e8;
+      --invite-bg-2:#ebe3d7;
+      --invite-paper:#fffdf8;
+      --invite-paper-2:#f8f2e9;
+      --invite-text:#3c342d;
+      --invite-soft:#776d63;
+      --invite-line:#d9cdbd;
+      --invite-accent:#826b55;
+      --invite-accent-dark:#5e4a39;
+      --invite-green:#7c8c76;
+      --invite-gold:#b89a66;
+      --invite-shadow:0 28px 75px rgba(61,48,37,.15);
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--invite-text);
+      background:
+        radial-gradient(circle at 15% 0%,rgba(184,154,102,.08),transparent 30%),
+        linear-gradient(180deg,#faf8f4,var(--invite-bg));
+    }
+
+    .invite-section{
+      position:relative;
+      overflow:hidden;
+      padding:clamp(70px,9vw,120px) 18px;
+      isolation:isolate;
+    }
+
+    .invite-section::before{
+      content:"";
+      position:absolute;
+      width:420px;
+      height:420px;
+      left:-180px;
+      top:20%;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(184,154,102,.10),transparent 70%);
+      z-index:-1;
+    }
+
+    .invite-section::after{
+      content:"";
+      position:absolute;
+      width:460px;
+      height:460px;
+      right:-200px;
+      bottom:-160px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(124,140,118,.10),transparent 70%);
+      z-index:-1;
+    }
+
+    .invite-shell{
+      width:min(1040px,100%);
+      margin:0 auto;
+    }
+
+    .invite-intro{
+      max-width:760px;
+      margin:0 auto 40px;
+      text-align:center;
+    }
+
+    .invite-eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 13px;
+      border:1px solid rgba(130,107,85,.18);
+      border-radius:999px;
+      background:rgba(255,255,255,.48);
+      color:var(--invite-accent-dark);
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+    }
+
+    .invite-intro h2{
+      margin:16px 0 18px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(38px,6vw,68px);
+      line-height:1;
+      letter-spacing:-.05em;
+      font-weight:500;
+    }
+
+    .invite-copy{
+      max-width:690px;
+      margin:0 auto;
+      color:var(--invite-soft);
+      font-size:clamp(15px,1.9vw,18px);
+      line-height:1.85;
+    }
+
+    .invite-copy p{
+      margin:0 0 12px;
+    }
+
+    .invite-ticket{
+      position:relative;
+      overflow:hidden;
+      display:grid;
+      grid-template-columns:1fr 1.2fr;
+      min-height:610px;
+      border:1px solid var(--invite-line);
+      border-radius:30px;
+      background:
+        linear-gradient(90deg,var(--invite-paper) 0 41%,var(--invite-paper-2) 41%);
+      box-shadow:var(--invite-shadow);
+    }
+
+    .invite-ticket::before,
+    .invite-ticket::after{
+      content:"";
+      position:absolute;
+      left:41%;
+      width:32px;
+      height:32px;
+      border-radius:50%;
+      background:var(--invite-bg);
+      transform:translateX(-50%);
+      z-index:4;
+      box-shadow:inset 0 0 0 1px rgba(130,107,85,.08);
+    }
+
+    .invite-ticket::before{top:-16px}
+    .invite-ticket::after{bottom:-16px}
+
+    .invite-ticket-left{
+      position:relative;
+      padding:clamp(28px,5vw,48px);
+      border-right:1px dashed #cbbdac;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:28px;
+    }
+
+    .invite-ticket-number{
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.17em;
+      color:#9a8c7e;
+      text-transform:uppercase;
+    }
+
+    .invite-ticket-left h3{
+      margin:18px 0 10px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(28px,4vw,42px);
+      line-height:1.05;
+      font-weight:500;
+    }
+
+    .invite-company-label{
+      margin-top:24px;
+      color:#9a8c7e;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .invite-company{
+      margin-top:7px;
+      font-weight:900;
+      font-size:18px;
+      color:var(--invite-accent-dark);
+    }
+
+    .invite-small-note{
+      padding-top:22px;
+      border-top:1px solid #e5dbce;
+      color:var(--invite-soft);
+      font-size:13px;
+      line-height:1.7;
+    }
+
+    .invite-ticket-right{
+      padding:clamp(28px,5vw,48px);
+    }
+
+    .invite-question{
+      margin:0 0 18px;
+      font-size:20px;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+
+    .invite-options{
+      display:grid;
+      gap:13px;
+    }
+
+    .invite-row{
+      padding:15px;
+      border:1px solid #e4dace;
+      border-radius:16px;
+      background:rgba(255,255,255,.62);
+    }
+
+    .invite-row-title{
+      display:flex;
+      gap:9px;
+      align-items:center;
+      margin-bottom:10px;
+      font-weight:850;
+      font-size:14px;
+    }
+
+    .invite-choice-group{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .invite-choice{
+      position:relative;
+    }
+
+    .invite-choice input{
+      position:absolute;
+      opacity:0;
+      pointer-events:none;
+    }
+
+    .invite-choice span{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:72px;
+      min-height:36px;
+      padding:0 11px;
+      border-radius:999px;
+      border:1px solid #ddd1c3;
+      background:#fffdfa;
+      color:#74695f;
+      font-size:12px;
+      font-weight:800;
+      transition:.2s ease;
+      cursor:pointer;
+    }
+
+    .invite-choice input:checked + span{
+      background:var(--invite-accent-dark);
+      color:white;
+      border-color:var(--invite-accent-dark);
+      box-shadow:0 7px 18px rgba(94,74,57,.16);
+    }
+
+    .invite-field{
+      margin-top:18px;
+    }
+
+    .invite-field label,
+    .invite-optional-title{
+      display:block;
+      margin-bottom:7px;
+      font-size:12px;
+      font-weight:900;
+      color:#675c52;
+    }
+
+    .invite-field input,
+    .invite-field textarea{
+      width:100%;
+      border:1px solid #dcd0c1;
+      border-radius:13px;
+      background:#fffdfa;
+      color:var(--invite-text);
+      padding:12px 13px;
+      outline:none;
+      transition:.2s ease;
+      resize:vertical;
+    }
+
+    .invite-field input:focus,
+    .invite-field textarea:focus{
+      border-color:#a99179;
+      box-shadow:0 0 0 4px rgba(169,145,121,.11);
+    }
+
+
+
+
+    .invite-plan-toggle{
+      width:100%;
+      margin-top:22px;
+      min-height:50px;
+      padding:0 16px;
+      border:1px solid #cfc0ae;
+      border-radius:14px;
+      background:#fffdfa;
+      color:var(--invite-accent-dark);
+      font-weight:900;
+      cursor:pointer;
+      transition:.22s ease;
+    }
+
+    .invite-plan-toggle:hover{
+      transform:translateY(-2px);
+      background:#f7f0e7;
+    }
+
+    .invite-optional{
+      display:none;
+      margin-top:16px;
+      padding:20px;
+      border:1px solid #ddd0c1;
+      border-radius:18px;
+      background:rgba(255,255,255,.55);
+      animation:invitePlanOpen .28s ease;
+    }
+
+    .invite-optional.open{
+      display:block;
+    }
+
+    @keyframes invitePlanOpen{
+      from{opacity:0;transform:translateY(-8px)}
+      to{opacity:1;transform:none}
+    }
+
+    .invite-plan-preview{
+      display:none;
+      margin-top:16px;
+      padding:15px 16px;
+      border:1px solid #cfc3b2;
+      border-radius:14px;
+      background:#f4efe6;
+      color:#5e5147;
+      font-size:13px;
+      line-height:1.65;
+    }
+
+    .invite-plan-preview.show{
+      display:block;
+    }
+
+    .invite-plan-preview strong{
+      color:#3f352e;
+    }
+
+    .invite-optional-heading{
+      margin:0 0 6px;
+      font-size:18px;
+      font-weight:900;
+    }
+
+    .invite-optional-copy{
+      margin:0 0 17px;
+      color:var(--invite-soft);
+      font-size:12px;
+      line-height:1.6;
+    }
+
+    .invite-date-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    .invite-form-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:24px;
+    }
+
+    .invite-submit,
+    .invite-close{
+      min-height:48px;
+      padding:0 17px;
+      border-radius:13px;
+      font-weight:900;
+      transition:.22s ease;
+    }
+
+    .invite-submit{
+      border:0;
+      color:white;
+      background:linear-gradient(135deg,#725b47,#92765d);
+      box-shadow:0 12px 28px rgba(94,74,57,.18);
+    }
+
+    .invite-submit:hover{
+      transform:translateY(-2px);
+    }
+
+    .invite-submit:disabled{
+      opacity:.65;
+      cursor:default;
+      transform:none;
+    }
+
+    .invite-close{
+      border:1px solid #d8cbbb;
+      color:#75695f;
+      background:#fffdfa;
+    }
+
+    .invite-close:hover{
+      background:#f8f2e9;
+    }
+
+    .invite-status{
+      min-height:20px;
+      margin-top:12px;
+      color:#786d63;
+      font-size:12px;
+      line-height:1.55;
+    }
+
+    .invite-status.error{
+      color:#8b4b43;
+    }
+
+    .invite-final-line{
+      margin:34px auto 0;
+      text-align:center;
+      color:#685f57;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:20px;
+    }
+
+    .invite-collapsed{
+      display:none;
+      margin-top:24px;
+      padding:28px;
+      border:1px solid var(--invite-line);
+      border-radius:20px;
+      background:rgba(255,255,255,.55);
+      text-align:center;
+      color:var(--invite-soft);
+      line-height:1.7;
+    }
+
+    .invite-collapsed.show{
+      display:block;
+      animation:inviteFade .35s ease;
+    }
+
+    .invite-reopen{
+      margin-top:12px;
+      border:0;
+      background:transparent;
+      color:var(--invite-accent-dark);
+      font-weight:900;
+      text-decoration:underline;
+      cursor:pointer;
+    }
+
+    /* SUCCESS */
+    .invite-success{
+      display:none;
+      position:absolute;
+      inset:0;
+      z-index:10;
+      place-items:center;
+      padding:24px;
+      background:rgba(255,253,248,.97);
+      text-align:center;
+    }
+
+    .invite-success.show{
+      display:grid;
+      animation:inviteFade .35s ease;
+    }
+
+    @keyframes inviteFade{
+      from{opacity:0}
+      to{opacity:1}
+    }
+
+    .invite-success-inner{
+      position:relative;
+      width:min(520px,100%);
+      padding:38px 30px;
+      border:1px solid #ded3c5;
+      border-radius:24px;
+      background:#fffdf8;
+      box-shadow:0 24px 65px rgba(61,48,37,.12);
+      overflow:hidden;
+    }
+
+    .invite-success-icon{
+      width:66px;
+      height:66px;
+      margin:0 auto 18px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:#eef0e8;
+      font-size:28px;
+    }
+
+    .invite-success h3{
+      margin:0 0 12px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:36px;
+      font-weight:500;
+    }
+
+    .invite-success p{
+      max-width:430px;
+      margin:0 auto;
+      color:var(--invite-soft);
+      line-height:1.75;
+    }
+
+    .invite-success strong{
+      display:block;
+      margin-top:14px;
+      color:var(--invite-text);
+    }
+
+    .invite-petal{
+      position:absolute;
+      width:13px;
+      height:20px;
+      border-radius:70% 30% 70% 30%;
+      background:#d9d4c6;
+      opacity:0;
+      animation:invitePetal 2.3s ease-in forwards;
+    }
+
+    @keyframes invitePetal{
+      0%{opacity:0;transform:translateY(-25px) rotate(0deg)}
+      15%{opacity:.7}
+      100%{opacity:0;transform:translateY(330px) rotate(420deg)}
+    }
+
+
+
+    .invite-activity-note{
+      max-width:680px;
+      margin:18px auto 0;
+      padding:10px 14px;
+      border-radius:14px;
+      border:1px solid rgba(130,107,85,.14);
+      background:rgba(255,255,255,.38);
+      color:#85796e;
+      font-size:11px;
+      line-height:1.55;
+      text-align:center;
+    }
+
+    .invite-back-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:46px;
+      margin-top:16px;
+      padding:0 17px;
+      border-radius:13px;
+      border:1px solid #d8cbbb;
+      background:#fffdfa;
+      color:#6f6257;
+      text-decoration:none;
+      font-weight:900;
+      transition:.22s ease;
+    }
+
+    .invite-back-link:hover{
+      transform:translateY(-2px);
+      background:#f8f2e9;
+    }
+
+    .invite-collapsed-actions{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    @media(max-width:820px){
+      .invite-ticket{
+        grid-template-columns:1fr;
+        background:var(--invite-paper);
+      }
+
+      .invite-ticket::before,
+      .invite-ticket::after{
+        display:none;
+      }
+
+      .invite-ticket-left{
+        border-right:0;
+        border-bottom:1px dashed #cbbdac;
+      }
+
+      .invite-ticket-right{
+        background:var(--invite-paper-2);
+      }
+    }
+
+    @media(max-width:560px){
+      .invite-section{
+        padding:62px 10px 80px;
+      }
+
+      .invite-ticket{
+        border-radius:20px;
+      }
+
+      .invite-ticket-left,
+      .invite-ticket-right{
+        padding:24px 18px;
+      }
+
+      .invite-choice-group{
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+      }
+
+      .invite-choice span{
+        width:100%;
+        min-width:0;
+      }
+
+      .invite-date-grid{
+        grid-template-columns:1fr;
+      }
+
+      .invite-submit,
+      .invite-close{
+        width:100%;
+      }
+    }
+.back-btn{
+        top:10px;
+        left:10px;
+        right:10px;
+        width:calc(100% - 20px);
+      }
+      .back-btn{
+      position:fixed;
+      top:16px;
+      left:16px;
+      z-index:50;
+      min-height:46px;
+      padding:0 16px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      text-decoration:none;
+      color:#f8f0e6;
+      background:rgba(40,31,25,.68);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      box-shadow:0 10px 28px rgba(0,0,0,.2);
+      font-weight:800;
+      transition:.25s ease;
+    }
+
+    .back-btn:hover{
+      transform:translateY(-3px);
+      background:rgba(40,31,25,.82);
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{
+        animation-duration:.001ms!important;
+        animation-iteration-count:1!important;
+        transition-duration:.001ms!important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       PEGA DESDE AQUÍ EN TU PÁGINA
+  ========================================================== -->
+  
+  
+
+  <section class="invite-section reveal" id="por-si-algun-dia">
+    <div class="invite-shell">
+      
+
+      <div class="invite-intro">
+        <div class="invite-eyebrow">🌷 Una pequeña puerta abierta
+          
+        </div>
+
+        <h2>Por si algún día...</h2>
+
+        <div class="invite-copy">
+          <p>
+            Si algún día necesitas despejar la mente, distraerte un poquito,
+            salir a caminar, comer algo rico, ver una película, reírte de cualquier
+            tontería o simplemente hablar un rato...
+          </p>
+
+          <p><strong>puedes contar conmigo.</strong></p>
+
+          <p>
+            No tiene que ser algo especial ni tener un motivo.
+            Y tampoco tienes que decidir nada ahora.
+          </p>
+
+          <p>
+            Solo quería dejarte una pequeña puerta abierta:
+            si algún día te nace compartir un momento conmigo, aquí voy a estar. 🤍
+          </p>
+        </div>
+
+        <div class="invite-activity-note">
+          mua
+        </div>
+      </div>
+
+      <div class="invite-ticket" id="inviteTicket">
+
+        <div class="invite-ticket-left">
+          <div>
+            <div class="invite-ticket-number">INVITACIÓN · SIN FECHA · SIN PRESIÓN</div>
+
+            <h3>🎟️ Una pequeña posibilidad</h3>
+
+            <div class="invite-company-label">Compañía</div>
+            <div class="invite-company">Soto + bonita 💗</div>
+          </div>
+
+          <div class="invite-small-note">
+            Esto no es una reserva ni una promesa.
+            Puedes responder algo, dejar todo vacío o simplemente cerrar esta parte.
+            Y si algún día ya tienes una idea concreta, también puedes dejar un plan.
+            No hay nada que decidir ahora. 🤍
+          </div>
+        </div>
+
+        <div class="invite-ticket-right">
+          <form id="inviteForm" novalidate>
+
+            <p class="invite-question">¿Qué te apetecería algún día?</p>
+
+            <div class="invite-options">
+
+              <div class="invite-row">
+                <div class="invite-row-title">🍽️ Comer algo</div>
+                <div class="invite-choice-group">
+                  <label class="invite-choice">
+                    <input type="radio" name="ir_a_comer" value="Sí">
+                    <span>Sí</span>
+                  </label>
+
+                  <label class="invite-choice">
+                    <input type="radio" name="ir_a_comer" value="Tal vez">
+                    <span>Tal vez</span>
+                  </label>
+
+                  <label class="invite-choice">
+                    <input type="radio" name="ir_a_comer" value="No">
+                    <span>No</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="invite-row">
+                <div class="invite-row-title">🎬 Ir al cine</div>
+                <div class="invite-choice-group">
+                  <label class="invite-choice">
+                    <input type="radio" name="ir_al_cine" value="Sí">
+                    <span>Sí</span>
+                  </label>
+
+                  <label class="invite-choice">
+                    <input type="radio" name="ir_al_cine" value="Tal vez">
+                    <span>Tal vez</span>
+                  </label>
+
+                  <label class="invite-choice">
+                    <input type="radio" name="ir_al_cine" value="No">
+                    <span>No</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="invite-row">
+                <div class="invite-row-title">🚶 Dar una vuelta / pasear</div>
+                <div class="invite-choice-group">
+                  <label class="invite-choice">
+                    <input type="radio" name="pasear" value="Sí">
+                    <span>Sí</span>
+                  </label>
+
+                  <label class="invite-choice">
+                    <input type="radio" name="pasear" value="Tal vez">
+                    <span>Tal vez</span>
+                  </label>
+
+                  <label class="invite-choice">
+                    <input type="radio" name="pasear" value="No">
+                    <span>No</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="invite-row">
+                <div class="invite-row-title">💬 Hablar y despejar la mente</div>
+                <div class="invite-choice-group">
+                  <label class="invite-choice">
+                    <input type="radio" name="hablar_y_despejarse" value="Sí">
+                    <span>Sí</span>
+                  </label>
+
+                  <label class="invite-choice">
+                    <input type="radio" name="hablar_y_despejarse" value="Tal vez">
+                    <span>Tal vez</span>
+                  </label>
+
+                  <label class="invite-choice">
+                    <input type="radio" name="hablar_y_despejarse" value="No">
+                    <span>No</span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="invite-field">
+              <label for="actividadPersonalizada">✨ ¿Hay algo más que te gustaría hacer?</label>
+              <textarea
+                id="actividadPersonalizada"
+                rows="3"
+                maxlength="500"
+                placeholder="Opcional..."
+              ></textarea>
+            </div>
+
+            <button class="invite-plan-toggle" id="invitePlanToggle" type="button">
+              📅 Hacer un plan
+            </button>
+
+            <div class="invite-optional" id="invitePlanPanel">
+              <p class="invite-optional-heading">📅 Si quieres dejar un plan...</p>
+
+              <p class="invite-optional-copy">
+                Puedes proponer un día, una hora y un lugar.
+                Solo si realmente te nace hacerlo. 🤍
+              </p>
+
+              <div class="invite-date-grid">
+                <div class="invite-field">
+                  <label for="fechaPropuesta">Fecha · opcional</label>
+                  <input type="date" id="fechaPropuesta">
+                </div>
+
+                <div class="invite-field">
+                  <label for="horaPropuesta">Hora · opcional</label>
+                  <input type="time" id="horaPropuesta">
+                </div>
+              </div>
+
+              <div class="invite-field">
+                <label for="lugarPropuesto">Lugar · opcional</label>
+                <input
+                  type="text"
+                  id="lugarPropuesto"
+                  maxlength="250"
+                  placeholder="¿Dónde te gustaría?"
+                >
+              </div>
+
+              <div class="invite-plan-preview" id="invitePlanPreview"></div>
+            </div>
+
+            <div class="invite-form-actions">
+              <button class="invite-submit" id="inviteSubmit" type="submit">
+                💌 Dejar una pequeña posibilidad
+              </button>
+
+              <button class="invite-close" id="inviteClose" type="button">
+                Cerrar sin enviar
+              </button>
+            </div>
+
+            <div class="invite-status" id="inviteStatus" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <div class="invite-success" id="inviteSuccess">
+          <div class="invite-success-inner" id="inviteSuccessInner">
+            <div class="invite-success-icon">🌷</div>
+
+            <h3 id="inviteSuccessTitle">Listo.</h3>
+
+            <p id="inviteSuccessMessage">
+              No hay planes obligatorios, fechas marcadas ni nada que tengas que decidir ahora.
+              Solo queda guardada una pequeña posibilidad para algún día.
+
+              <strong>Cuando quieras. 🤍</strong>
+            </p>
+
+            <a class="invite-back-link" href="regalo21.html">
+              ← Volver a los regalos
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="invite-collapsed" id="inviteCollapsed">
+        No hace falta responder nada.
+        Puedes simplemente seguir con tu día. 🤍
+
+        <div class="invite-collapsed-actions">
+          <button class="invite-reopen" id="inviteReopen" type="button">
+            Volver a mostrar la invitación
+          </button>
+
+          <a class="invite-back-link" href="regalo21.html">
+            ← Volver a los regalos
+          </a>
+        </div>
+      </div>
+
+      <p class="invite-final-line">Si algún día te nace, aquí estoy. 🤍</p>
+    </div>
+  </section>
+
+
+  <!-- Supabase JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    /* =========================================================
+       SUPABASE
+       IMPORTANTE:
+       - Usa solamente tu ANON KEY en el navegador.
+       - NUNCA pongas una service_role key aquí.
+       - Activa RLS con el SQL que te dejo aparte.
+    ========================================================= */
+
+    const SUPABASE_URL =
+      "https://wrfpnjsdjwotlzhguncj.supabase.co";
+
+    const SUPABASE_ANON_KEY =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndyZnBuanNkandvdGx6aGd1bmNqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk4NjY1NTMsImV4cCI6MjEwNTQ0MjU1M30.zlk6zoH1UVQUvBUS9tk07tIHeHOgeiUjEp7d0FvdWwM";
+
+    const sb = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
+    );
+
+
+    /* =========================================================
+       REGISTRO TRANSPARENTE DE ACTIVIDAD
+       - pagina_abierta
+       - cerrar_sin_enviar
+       No envía ubicación, dispositivo ni navegador.
+    ========================================================= */
+
+    const INVITE_SESSION_KEY = "invite-session-v2";
+    const INVITE_OPEN_KEY = "invite-open-logged-v2";
+
+    function getInviteSessionId(){
+      let sessionId = sessionStorage.getItem(INVITE_SESSION_KEY);
+
+      if(!sessionId){
+        sessionId = (window.crypto && crypto.randomUUID)
+          ? crypto.randomUUID()
+          : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+
+        sessionStorage.setItem(INVITE_SESSION_KEY, sessionId);
+      }
+
+      return sessionId;
+    }
+
+    async function registrarEventoInvitacion(evento){
+      try{
+        const { error } = await sb
+          .from("visitas_invitacion")
+          .insert([{
+            pagina: "por_si_algun_dia",
+            evento,
+            sesion_anonima: getInviteSessionId()
+          }]);
+
+        if(error){
+          console.warn("No se pudo registrar el evento:", error);
+        }
+      }catch(error){
+        console.warn("No se pudo registrar el evento:", error);
+      }
+    }
+
+    async function registrarAperturaUnaVez(){
+      if(sessionStorage.getItem(INVITE_OPEN_KEY)) return;
+
+      sessionStorage.setItem(INVITE_OPEN_KEY, "1");
+      await registrarEventoInvitacion("pagina_abierta");
+    }
+
+    if(document.visibilityState === "visible"){
+      registrarAperturaUnaVez();
+    }else{
+      document.addEventListener("visibilitychange", function onVisible(){
+        if(document.visibilityState === "visible"){
+          registrarAperturaUnaVez();
+          document.removeEventListener("visibilitychange", onVisible);
+        }
+      });
+    }
+
+    const inviteForm = document.getElementById("inviteForm");
+    const inviteSubmit = document.getElementById("inviteSubmit");
+    const inviteStatus = document.getElementById("inviteStatus");
+
+    const inviteTicket = document.getElementById("inviteTicket");
+    const inviteSuccess = document.getElementById("inviteSuccess");
+    const inviteSuccessInner = document.getElementById("inviteSuccessInner");
+
+    const inviteClose = document.getElementById("inviteClose");
+    const inviteCollapsed = document.getElementById("inviteCollapsed");
+    const inviteReopen = document.getElementById("inviteReopen");
+
+    const invitePlanToggle = document.getElementById("invitePlanToggle");
+    const invitePlanPanel = document.getElementById("invitePlanPanel");
+    const invitePlanPreview = document.getElementById("invitePlanPreview");
+
+    const fechaPropuesta = document.getElementById("fechaPropuesta");
+    const horaPropuesta = document.getElementById("horaPropuesta");
+    const lugarPropuesto = document.getElementById("lugarPropuesto");
+
+    const inviteSuccessTitle = document.getElementById("inviteSuccessTitle");
+    const inviteSuccessMessage = document.getElementById("inviteSuccessMessage");
+
+    const originalSubmitText = inviteSubmit.innerHTML;
+
+
+    function getRadioValue(name){
+      const checked =
+        document.querySelector(`input[name="${name}"]:checked`);
+
+      return checked ? checked.value : null;
+    }
+
+
+    function cleanOptional(value){
+      const clean = value.trim();
+      return clean === "" ? null : clean;
+    }
+
+
+    function formatPlanDate(value){
+      if(!value) return "";
+
+      const [year, month, day] = value.split("-").map(Number);
+      const date = new Date(year, month - 1, day);
+
+      return new Intl.DateTimeFormat("es-BO", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      }).format(date);
+    }
+
+
+    function getCompletePlan(){
+      const fecha = fechaPropuesta.value;
+      const hora = horaPropuesta.value;
+      const lugar = lugarPropuesto.value.trim();
+
+      if(!fecha || !hora || !lugar){
+        return null;
+      }
+
+      return {
+        fecha,
+        hora,
+        lugar,
+        fechaBonita: formatPlanDate(fecha)
+      };
+    }
+
+
+    function updatePlanPreview(){
+      const plan = getCompletePlan();
+
+      if(!plan){
+        invitePlanPreview.classList.remove("show");
+        invitePlanPreview.innerHTML = "";
+        inviteSubmit.innerHTML = originalSubmitText;
+        return;
+      }
+
+      invitePlanPreview.innerHTML = `
+        <strong>Entonces quedaría así:</strong><br>
+        ${plan.fechaBonita}, a las ${plan.hora}, en ${escapeHtml(plan.lugar)}. 🤍<br><br>
+        Si presionas el botón de abajo, se entenderá que esta es la idea de plan que quieres dejar.
+      `;
+
+      invitePlanPreview.classList.add("show");
+      inviteSubmit.innerHTML = "💌 Dejar este plan";
+    }
+
+
+    function escapeHtml(value){
+      return value.replace(/[&<>'"]/g, char => ({
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        "'":"&#039;",
+        '"':"&quot;"
+      }[char]));
+    }
+
+
+    invitePlanToggle.addEventListener("click", () => {
+      const open = invitePlanPanel.classList.toggle("open");
+      invitePlanToggle.innerHTML = open
+        ? "Cerrar plan"
+        : "📅 Hacer un plan";
+    });
+
+
+    [fechaPropuesta, horaPropuesta, lugarPropuesto].forEach(field => {
+      field.addEventListener("input", updatePlanPreview);
+      field.addEventListener("change", updatePlanPreview);
+    });
+
+
+    inviteForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if(inviteSubmit.disabled) return;
+
+      inviteSubmit.disabled = true;
+      inviteSubmit.innerHTML = "Guardando...";
+      inviteStatus.className = "invite-status";
+      inviteStatus.textContent = "";
+
+      const payload = {
+        compania: "Soto + bonita 💗",
+
+        ir_a_comer:
+          getRadioValue("ir_a_comer"),
+
+        ir_al_cine:
+          getRadioValue("ir_al_cine"),
+
+        pasear:
+          getRadioValue("pasear"),
+
+        hablar_y_despejarse:
+          getRadioValue("hablar_y_despejarse"),
+
+        actividad_personalizada:
+          cleanOptional(
+            document.getElementById("actividadPersonalizada").value
+          ),
+
+        fecha_propuesta:
+          fechaPropuesta.value || null,
+
+        hora_propuesta:
+          horaPropuesta.value || null,
+
+        lugar_propuesto:
+          cleanOptional(lugarPropuesto.value),
+
+        version_formulario: "1.1",
+        origen: "invitacion_final"
+      };
+
+      payload.respuesta_vacia =
+        !payload.ir_a_comer &&
+        !payload.ir_al_cine &&
+        !payload.pasear &&
+        !payload.hablar_y_despejarse &&
+        !payload.actividad_personalizada &&
+        !payload.fecha_propuesta &&
+        !payload.hora_propuesta &&
+        !payload.lugar_propuesto;
+
+      try{
+        /*
+          La respuesta guarda únicamente lo que se selecciona o escribe
+          en el formulario. La apertura/cierre se registra por separado
+          en visitas_invitacion.
+        */
+
+        const { error } = await sb
+          .from("pequenas_posibilidades")
+          .insert([payload]);
+
+        if(error){
+          throw error;
+        }
+
+        const plan = getCompletePlan();
+
+        if(plan){
+          inviteSuccessTitle.textContent = "Entonces queda así. 🌷";
+          inviteSuccessMessage.innerHTML = `
+            Entonces, el <strong>${escapeHtml(plan.fechaBonita)}</strong>
+            a las <strong>${escapeHtml(plan.hora)}</strong>
+            nos veremos en <strong>${escapeHtml(plan.lugar)}</strong>. 🤍
+          `;
+        }else{
+          inviteSuccessTitle.textContent = "Listo. 🌷";
+          inviteSuccessMessage.innerHTML = `
+            No hay planes obligatorios, fechas marcadas ni nada que tengas que decidir ahora.
+            Solo queda guardada una pequeña posibilidad para algún día.
+            <strong>Cuando quieras. 🤍</strong>
+          `;
+        }
+
+        inviteSuccess.classList.add("show");
+        createSuccessPetals();
+
+      }catch(error){
+        console.error("Error Supabase:", error);
+
+        inviteStatus.className = "invite-status error";
+        inviteStatus.textContent =
+          "No se pudo guardar en este momento. No pasa nada: puedes cerrar esta parte sin enviar nada.";
+      }finally{
+        inviteSubmit.disabled = false;
+        updatePlanPreview();
+      }
+    });
+
+
+    inviteClose.addEventListener("click", async () => {
+      if(inviteClose.disabled) return;
+
+      inviteClose.disabled = true;
+      const originalCloseText = inviteClose.textContent;
+      inviteClose.textContent = "Cerrando...";
+
+      await registrarEventoInvitacion("cerrar_sin_enviar");
+
+      inviteTicket.style.display = "none";
+      inviteCollapsed.classList.add("show");
+
+      inviteClose.disabled = false;
+      inviteClose.textContent = originalCloseText;
+    });
+
+
+    inviteReopen.addEventListener("click", () => {
+      inviteCollapsed.classList.remove("show");
+      inviteTicket.style.display = "grid";
+    });
+
+
+    function createSuccessPetals(){
+      const count = 16;
+
+      for(let i = 0; i < count; i++){
+        const petal = document.createElement("span");
+
+        petal.className = "invite-petal";
+        petal.style.left = Math.random() * 100 + "%";
+        petal.style.top = (-30 - Math.random()*120) + "px";
+        petal.style.animationDelay = (Math.random()*.8) + "s";
+        petal.style.transform = `rotate(${Math.random()*180}deg)`;
+
+        inviteSuccessInner.appendChild(petal);
+
+        setTimeout(() => petal.remove(), 3500);
+      }
+    }
+  </script>
+
+</body>
+</html>
