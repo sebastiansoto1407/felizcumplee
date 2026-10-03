@@ -18,7 +18,6 @@
 
   <title>Para ti, Keyssi.</title>
 
-
   <style>
 
     /* =========================================================
@@ -59,33 +58,23 @@
 
     }
 
-
-
     /* =========================================================
        RESET
        ========================================================= */
 
     * {
-
       margin: 0;
       padding: 0;
-
       box-sizing: border-box;
-
     }
-
 
     html {
-
       scroll-behavior: smooth;
-
     }
-
 
     body {
 
       min-height: 100vh;
-
       overflow-x: hidden;
 
       font-family:
@@ -126,17 +115,10 @@
 
     }
 
-
-
     button,
     a {
-
-      -webkit-tap-highlight-color:
-        transparent;
-
+      -webkit-tap-highlight-color: transparent;
     }
-
-
 
     /* =========================================================
        FONDO
@@ -145,28 +127,23 @@
     .background {
 
       position: fixed;
-
       inset: 0;
 
       z-index: -10;
 
       pointer-events: none;
-
       overflow: hidden;
 
     }
-
 
     .background::after {
 
       content: "";
 
       position: absolute;
-
       inset: 0;
 
       background:
-
         linear-gradient(
           180deg,
           rgba(5, 3, 9, .04),
@@ -176,20 +153,14 @@
 
     }
 
-
-
     /* =========================================================
        ESTRELLAS
        ========================================================= */
 
     .stars {
-
       position: absolute;
-
       inset: 0;
-
     }
-
 
     .stars span {
 
@@ -204,14 +175,12 @@
         rgba(255,255,255,.82);
 
       box-shadow:
-
         0 0 5px
         rgba(255,255,255,.42);
 
       opacity: .22;
 
       animation:
-
         starTwinkle
         5s
         ease-in-out
@@ -219,107 +188,65 @@
 
     }
 
-
     .stars span:nth-child(1) {
-
       left: 8%;
       top: 13%;
-
       animation-delay: .3s;
-
     }
-
 
     .stars span:nth-child(2) {
-
       left: 19%;
       top: 41%;
-
       animation-delay: 1.4s;
-
     }
-
 
     .stars span:nth-child(3) {
-
       left: 34%;
       top: 8%;
-
       animation-delay: 2.1s;
-
     }
-
 
     .stars span:nth-child(4) {
-
       left: 68%;
       top: 17%;
-
       animation-delay: .8s;
-
     }
-
 
     .stars span:nth-child(5) {
-
       left: 88%;
       top: 31%;
-
       animation-delay: 3s;
-
     }
-
 
     .stars span:nth-child(6) {
-
       left: 76%;
       top: 63%;
-
       animation-delay: 1.1s;
-
     }
-
 
     .stars span:nth-child(7) {
-
       left: 11%;
       top: 77%;
-
       animation-delay: 2.5s;
-
     }
-
 
     .stars span:nth-child(8) {
-
       left: 91%;
       top: 82%;
-
       animation-delay: .6s;
-
     }
-
 
     .stars span:nth-child(9) {
-
       left: 52%;
       top: 29%;
-
       animation-delay: 3.2s;
-
     }
-
 
     .stars span:nth-child(10) {
-
       left: 43%;
       top: 87%;
-
       animation-delay: 1.7s;
-
     }
-
-
 
     /* =========================================================
        LUCES AMBIENTALES
@@ -336,7 +263,6 @@
       opacity: .14;
 
       animation:
-
         ambientMove
         15s
         ease-in-out
@@ -344,7 +270,6 @@
         alternate;
 
     }
-
 
     .ambient-light.one {
 
@@ -358,7 +283,6 @@
         #bd6c8a;
 
     }
-
 
     .ambient-light.two {
 
@@ -374,8 +298,6 @@
       animation-delay: 3s;
 
     }
-
-
 
     /* =========================================================
        BOTÓN VOLVER
@@ -401,7 +323,6 @@
         0 17px;
 
       border:
-
         1px solid
         rgba(255,255,255,.11);
 
@@ -421,7 +342,6 @@
         blur(15px);
 
       box-shadow:
-
         0 10px 30px
         rgba(0,0,0,.18);
 
@@ -437,14 +357,12 @@
       cursor: pointer;
 
       transition:
-
         transform .25s ease,
         color .25s ease,
         border-color .25s ease,
         background .25s ease;
 
     }
-
 
     .back-button:hover {
 
@@ -461,8 +379,6 @@
 
     }
 
-
-
     /* =========================================================
        PÁGINA
        ========================================================= */
@@ -470,11 +386,9 @@
     .page {
 
       width: 100%;
-
       min-height: 100vh;
 
       padding:
-
         105px
         20px
         80px;
@@ -485,15 +399,12 @@
 
     }
 
-
     .letter-wrapper {
 
       width:
         min(100%, 850px);
 
     }
-
-
 
     /* =========================================================
        CABECERA
@@ -507,14 +418,12 @@
       text-align: center;
 
       animation:
-
         fadeDown
         .9s
         ease
         both;
 
     }
-
 
     .letter-kicker {
 
@@ -544,7 +453,6 @@
 
     }
 
-
     .letter-kicker::before,
     .letter-kicker::after {
 
@@ -554,7 +462,6 @@
       height: 1px;
 
       background:
-
         linear-gradient(
           90deg,
           transparent,
@@ -563,14 +470,9 @@
 
     }
 
-
     .letter-kicker::after {
-
-      transform:
-        scaleX(-1);
-
+      transform: scaleX(-1);
     }
-
 
     .letter-heading h1 {
 
@@ -592,12 +494,10 @@
         #faf0f3;
 
       text-shadow:
-
         0 9px 35px
         rgba(215, 144, 163, .13);
 
     }
-
 
     .letter-heading p {
 
@@ -626,8 +526,6 @@
 
     }
 
-
-
     /* =========================================================
        CARTA
        ========================================================= */
@@ -635,21 +533,17 @@
     .letter {
 
       position: relative;
-
       overflow: hidden;
 
       padding:
-
         clamp(45px, 7vw, 80px)
         clamp(25px, 8vw, 79px);
 
       border:
-
         1px solid
         rgba(255,255,255,.35);
 
       border-radius:
-
         10px
         10px
         25px
@@ -692,14 +586,12 @@
         rgba(255,255,255,.90);
 
       animation:
-
         letterEnter
         1s
         cubic-bezier(.2,.8,.2,1)
         both;
 
     }
-
 
     .letter::before {
 
@@ -714,7 +606,6 @@
       opacity: .11;
 
       background-image:
-
         repeating-linear-gradient(
           0deg,
           transparent 0,
@@ -726,7 +617,6 @@
         multiply;
 
     }
-
 
     .letter::after {
 
@@ -741,7 +631,6 @@
       height: 1px;
 
       background:
-
         linear-gradient(
           90deg,
           transparent,
@@ -750,8 +639,6 @@
         );
 
     }
-
-
 
     /* =========================================================
        SELLO
@@ -768,12 +655,10 @@
       justify-content: center;
 
       margin:
-
         -25px auto
         37px;
 
     }
-
 
     .seal {
 
@@ -801,7 +686,6 @@
         23px;
 
       background:
-
         radial-gradient(
           circle at 35% 28%,
           #db96a5,
@@ -827,7 +711,6 @@
 
     }
 
-
     .seal::before {
 
       content: "";
@@ -837,7 +720,6 @@
       inset: 5px;
 
       border:
-
         1px solid
         rgba(255,235,239,.34);
 
@@ -845,8 +727,6 @@
         inherit;
 
     }
-
-
 
     /* =========================================================
        TÍTULO
@@ -858,7 +738,6 @@
         42px;
 
     }
-
 
     .letter-title h2 {
 
@@ -884,7 +763,6 @@
 
     }
 
-
     .letter-title-line {
 
       width:
@@ -897,7 +775,6 @@
         100px;
 
       background:
-
         linear-gradient(
           90deg,
           var(--rosa-oscuro),
@@ -906,8 +783,6 @@
 
     }
 
-
-
     /* =========================================================
        TEXTO
        ========================================================= */
@@ -915,11 +790,9 @@
     .letter-body {
 
       position: relative;
-
       z-index: 2;
 
     }
-
 
     .letter-body p {
 
@@ -945,13 +818,11 @@
 
     }
 
-
     .letter-body p:first-child::first-letter {
 
       float: left;
 
       padding:
-
         8px
         9px
         0
@@ -972,7 +843,6 @@
 
     }
 
-
     .letter-body em {
 
       color:
@@ -983,7 +853,6 @@
 
     }
 
-
     .letter-body strong {
 
       color:
@@ -993,8 +862,6 @@
         700;
 
     }
-
-
 
     /* =========================================================
        FRASE TODAVÍA TE AMO
@@ -1014,7 +881,6 @@
         center;
 
     }
-
 
     .love-line::before {
 
@@ -1038,7 +904,6 @@
         50%;
 
       background:
-
         radial-gradient(
           ellipse,
           rgba(198, 127, 144, .15),
@@ -1049,7 +914,6 @@
         blur(8px);
 
     }
-
 
     .love-line span {
 
@@ -1079,7 +943,6 @@
 
     }
 
-
     .love-line::after {
 
       content: "♡";
@@ -1099,8 +962,6 @@
 
     }
 
-
-
     /* =========================================================
        FRASE FINAL DESTACADA
        ========================================================= */
@@ -1113,17 +974,14 @@
         44px 0;
 
       padding:
-
         30px
         25px;
 
       border-top:
-
         1px solid
         rgba(161, 99, 117, .17);
 
       border-bottom:
-
         1px solid
         rgba(161, 99, 117, .17);
 
@@ -1131,7 +989,6 @@
         center;
 
       background:
-
         linear-gradient(
           90deg,
           transparent,
@@ -1140,7 +997,6 @@
         );
 
     }
-
 
     .special-quote::before {
 
@@ -1166,7 +1022,6 @@
 
     }
 
-
     .special-quote p {
 
       margin:
@@ -1186,8 +1041,6 @@
 
     }
 
-
-
     /* =========================================================
        FIRMA
        ========================================================= */
@@ -1203,7 +1056,6 @@
         39px;
 
       border-top:
-
         1px solid
         rgba(95, 61, 73, .12);
 
@@ -1211,7 +1063,6 @@
         right;
 
     }
-
 
     .signature small {
 
@@ -1231,7 +1082,6 @@
         var(--texto-suave);
 
     }
-
 
     .signature strong {
 
@@ -1256,7 +1106,6 @@
 
     }
 
-
     .signature-heart {
 
       display: inline-block;
@@ -1271,15 +1120,12 @@
         16px;
 
       animation:
-
         heartBeat
         4s
         ease-in-out
         infinite;
 
     }
-
-
 
     /* =========================================================
        FINAL
@@ -1294,7 +1140,6 @@
         center;
 
     }
-
 
     .final-line {
 
@@ -1320,7 +1165,6 @@
 
     }
 
-
     .final-line::before,
     .final-line::after {
 
@@ -1333,7 +1177,6 @@
         1px;
 
       background:
-
         linear-gradient(
           90deg,
           transparent,
@@ -1342,14 +1185,12 @@
 
     }
 
-
     .final-line::after {
 
       transform:
         scaleX(-1);
 
     }
-
 
     .bottom-back {
 
@@ -1368,7 +1209,6 @@
         0 22px;
 
       border:
-
         1px solid
         rgba(255,255,255,.10);
 
@@ -1391,7 +1231,6 @@
 
     }
 
-
     .bottom-back:hover {
 
       color:
@@ -1404,8 +1243,6 @@
         translateY(-2px);
 
     }
-
-
 
     /* =========================================================
        ANIMACIONES
@@ -1435,7 +1272,6 @@
 
     }
 
-
     @keyframes fadeDown {
 
       from {
@@ -1457,7 +1293,6 @@
       }
 
     }
-
 
     @keyframes starTwinkle {
 
@@ -1482,7 +1317,6 @@
 
     }
 
-
     @keyframes ambientMove {
 
       from {
@@ -1500,7 +1334,6 @@
       }
 
     }
-
 
     @keyframes heartBeat {
 
@@ -1521,8 +1354,6 @@
 
     }
 
-
-
     /* =========================================================
        RESPONSIVE
        ========================================================= */
@@ -1532,13 +1363,11 @@
       .page {
 
         padding:
-
           90px
           13px
           56px;
 
       }
-
 
       .back-button {
 
@@ -1553,14 +1382,12 @@
 
       }
 
-
       .letter-heading {
 
         margin-bottom:
           34px;
 
       }
-
 
       .letter-heading p {
 
@@ -1572,24 +1399,20 @@
 
       }
 
-
       .letter {
 
         padding:
-
           49px
           23px
           49px;
 
         border-radius:
-
           8px
           8px
           21px
           21px;
 
       }
-
 
       .seal {
 
@@ -1601,7 +1424,6 @@
 
       }
 
-
       .seal-wrap {
 
         margin-top:
@@ -1612,14 +1434,12 @@
 
       }
 
-
       .letter-title {
 
         margin-bottom:
           35px;
 
       }
-
 
       .letter-body p {
 
@@ -1631,7 +1451,6 @@
 
       }
 
-
       .love-line {
 
         margin:
@@ -1639,22 +1458,18 @@
 
       }
 
-
       .special-quote {
 
         margin:
           37px -4px;
 
         padding:
-
           27px
           15px;
 
       }
 
     }
-
-
 
     /* =========================================================
        REDUCIR MOVIMIENTO
@@ -1668,7 +1483,6 @@
           auto;
 
       }
-
 
       .stars span,
       .ambient-light,
@@ -1687,14 +1501,11 @@
 
 </head>
 
-
-
 <body>
-
 
   <!-- =======================================================
        FONDO
-       ======================================================= -->
+       ======================================================== -->
 
   <div
     class="background"
@@ -1708,7 +1519,6 @@
       <span></span>
       <span></span>
       <span></span>
-
       <span></span>
       <span></span>
       <span></span>
@@ -1717,11 +1527,9 @@
 
     </div>
 
-
     <div
       class="ambient-light one"
     ></div>
-
 
     <div
       class="ambient-light two"
@@ -1729,11 +1537,9 @@
 
   </div>
 
-
-
   <!-- =======================================================
        VOLVER
-       ======================================================= -->
+       ======================================================== -->
 
   <button
     class="back-button"
@@ -1746,49 +1552,33 @@
 
   </button>
 
-
-
   <!-- =======================================================
        CONTENIDO
-       ======================================================= -->
+       ======================================================== -->
 
   <main class="page">
 
-
     <div class="letter-wrapper">
-
 
       <!-- CABECERA -->
 
       <header class="letter-heading">
 
-
         <div class="letter-kicker">
-
           Una carta para vos
-
         </div>
 
-
         <h1>
-
           Para ti, Keyssi.
-
         </h1>
 
-
         <p>
-
           Hay cosas que pasan con el tiempo.
           Y hay otras que, por alguna razón,
           simplemente se quedan.
-
         </p>
 
-
       </header>
-
-
 
       <!-- ===================================================
            CARTA
@@ -1796,30 +1586,22 @@
 
       <article class="letter">
 
-
         <div class="seal-wrap">
 
           <div
             class="seal"
             aria-hidden="true"
           >
-
             ♡
-
           </div>
 
         </div>
 
-
-
         <div class="letter-title">
 
           <h2>
-
             Para ti, Keyssi.
-
           </h2>
-
 
           <div
             class="letter-title-line"
@@ -1827,224 +1609,96 @@
 
         </div>
 
-
-
         <div class="letter-body">
 
-
           <p>
-
-            No sé exactamente en qué momento decidí escribirte esto.
-            Quizás porque hay cosas que, aunque pase el tiempo, uno
-            sigue guardando dentro y que simplemente no desaparecen.
-            Ha pasado bastante desde que nuestras vidas tomaron caminos
-            diferentes. He intentado seguir adelante, ocupar mi cabeza
-            con la universidad, con mis clases, con tareas, proyectos,
-            amigos y todas esas cosas que forman parte de mi vida ahora.
-            Y sí, he avanzado en muchas cosas, pero hay algo que nunca
-            pude negar: todavía estás ahí.
-
+            No sabía muy bien cómo empezar esta carta. Quizás porque hay cosas que uno siente durante tanto tiempo que llega un momento en el que simplemente quiere ponerlas en palabras. Y creo que hoy quería aprovechar para decirte algo que probablemente ya sabes, pero que nunca está de más recordar: fuiste y sigues siendo una persona muy importante para mí.
           </p>
 
-
-
           <p>
-
-            A veces apareces de la manera más inesperada, en una canción,
-            en un atardecer, en algún recuerdo, en una bebida, en una
-            pequeña cosa que me hace pensar en ti. Y entonces me doy
-            cuenta de que, aunque haya pasado tanto tiempo, hay una parte
-            de mí que todavía te busca entre la gente. Supongo que por
-            eso nunca pude verte como simplemente alguien más.
-            Para mí siempre fuiste diferente.
-
+            Cuando miro hacia atrás y pienso en todo lo que vivimos, me cuesta escoger solamente algunos recuerdos. Hay demasiadas pequeñas cosas que se quedaron conmigo: las conversaciones, las risas, los nervios, los atardeceres, las canciones, las miradas y esos momentos simples que en su momento parecían normales, pero que con el tiempo terminaron convirtiéndose en recuerdos que guardo con muchísimo cariño.
           </p>
 
-
-
           <p>
-
-            Fuiste mi <em>bonita</em>, y yo fui tu <em>bonito</em>.
-            Puede parecer algo pequeño, pero para mí nunca lo fue.
-            Me gustaba que ese apodo existiera entre nosotros, porque
-            sentía que era algo nuestro, algo que nació de lo que fuimos
-            y de todo lo que vivimos. Y aunque nuestra historia no terminó
-            como alguna vez imaginamos, nunca voy a negar lo importante
-            que fue para mí. Lo que vivimos en 2022 fue una de las etapas
-            más bonitas de mi vida. Fuiste una persona que llegó a
-            significar muchísimo para mí, y por eso siempre voy a estar
-            agradecido. No solamente por haber sido mi pareja, sino por
-            haber sido tú, por las conversaciones, las risas, los nervios,
-            los momentos simples, los atardeceres, las miradas y todas
-            esas pequeñas cosas que quizás para alguien más no
-            significarían demasiado, pero que para mí se quedaron
-            guardadas.
-
+            Lo que vivimos en 2022 fue una de las etapas más bonitas de mi vida. Y aunque el tiempo haya pasado y muchas cosas hayan cambiado desde entonces, nunca voy a dejar de agradecer haber coincidido contigo. Fuiste una parte muy bonita de mi historia y, sinceramente, una de las mejores cosas que me han pasado.
           </p>
 
-
-
           <p>
-
-            Incluso después de todo, cuando volvimos a hablar, hubo
-            momentos en los que sentí que aquella conexión seguía
-            existiendo de alguna manera. Y quizás por eso me costó
-            todavía más aceptar que las cosas ya no eran como antes.
-            Sé que tú tienes tu propia vida, tus propios sentimientos,
-            tus propias razones y tu propio camino, y quiero respetarlo.
-            No te escribo esto para hacerte sentir culpable, ni para
-            pedirte que regreses conmigo, ni para obligarte a sentir
-            algo que quizás ya no sientes. Solo quería que supieras
-            la verdad desde mi lado.
-
+            Siempre me gustó que fuéramos esa pareja random. Un día podíamos estar hablando como gente seria y al siguiente podías tirarme un brownie en la cara, o simplemente estar ahí, existiendo juntos en alguna de esas rutas por las que íbamos. Puede parecer una tontería, pero para mí nunca lo fue. Eran cosas nuestras. Incluso una palabra tan sencilla como “bonito” terminó teniendo tu nombre detrás para mí, y por eso siempre voy a recordarla con cariño.
           </p>
 
-
-
-          <div class="love-line">
-
-            <span>
-
-              Todavía te amo.
-
-            </span>
-
-          </div>
-
-
-
           <p>
-
-            Y decirlo después de tanto tiempo no es algo que me resulte
-            fácil. He intentado reemplazar lo que sentía por ti con otras
-            cosas, con estudiar más, con ocuparme, con hacer tareas,
-            con pensar en mi futuro, con mantener la cabeza llena para
-            no pensar demasiado. Y aunque todo eso me ha ayudado a seguir
-            funcionando, nunca consiguió borrar lo que siento. Porque no
-            era simplemente estar acostumbrado a ti. Eras tú.
-            Y creo que esa es la parte que más me ha costado aceptar.
-
+            También quiero que sepas que me alegra muchísimo ver todo lo que has ido construyendo para tu vida. Sé que tienes muchos proyectos, sueños y metas por delante, y de corazón deseo que todo te salga bien. Espero que sigas creciendo, aprendiendo, consiguiendo aquello por lo que estás trabajando y demostrando todo lo que eres capaz de hacer. Ojalá cada nuevo proyecto te acerque un poquito más a la vida que quieres y que nunca te falten motivos para sentirte orgullosa de ti misma.
           </p>
 
-
-
           <p>
-
-            He conocido y conocido a muchas personas, pero cuando miro
-            alrededor, hay una parte de mí que todavía busca tu rostro.
-            Como si entre tantas personas mis ojos siguieran esperando
-            encontrarte a ti. No sé qué vaya a pasar con nosotros.
-            Quizás nuestras vidas continúen separadas, quizás algún día
-            volvamos a hablar, quizás nos encontremos nuevamente cuando
-            ya haya pasado todavía más tiempo. No quiero escribir el
-            futuro por los dos.
-
+            Y más allá de cualquier cosa que haya pasado entre nosotros, quiero que cuando pienses en mí puedas hacerlo con tranquilidad. Solo quería dejarte unas palabras bonitas, de esas que uno guarda durante mucho tiempo y que finalmente decide compartir.
           </p>
 
-
-
           <p>
-
-            Pero si alguna vez llegamos a encontrarnos otra vez, quiero
-            que sepas que no voy a recordar nuestra historia con
-            resentimiento. Voy a recordar a la chica que fue mi bonita,
-            a la persona que alguna vez hizo que me sintiera tan feliz,
-            a alguien que, para bien o para mal, dejó una huella enorme
-            en mi vida.
-
+            Te quiero muchísimo, Keyssi, y creo que siempre voy a tener un cariño muy especial por ti. Hay personas que pasan por nuestra vida y se convierten en recuerdos, pero también hay algunas que terminan formando parte de quienes somos. Tú eres una de esas personas para mí.
           </p>
 
-
-
           <p>
-
-            Y si algún día necesitas despejar tu mente, salir a caminar,
-            conversar, reírte un rato, comer algo, distraerte o simplemente
-            tener compañía, quiero que sepas que puedes encontrar en mí
-            a alguien que va a escucharte sin juzgarte. No como una
-            obligación, no como una condición, simplemente porque,
-            después de todo lo que vivimos, sigues siendo alguien muy
-            importante para mí.
-
+            Por eso quiero quedarme con todo lo bonito: con las cosas que nos hicieron reír, con las veces que fuimos felices, con las pequeñas tonterías que solamente nosotros entendíamos y con esa versión de nosotros que alguna vez existió. No necesito cambiar esos recuerdos ni hacer que sean algo diferente. Los amo tal como son. Me basta con saber que ocurrieron y que tuve la suerte de vivirlos contigo.
           </p>
 
-
-
           <p>
-
-            Y si algún día me preguntas qué significaste para mí,
-            probablemente nunca encuentre una respuesta suficientemente
-            grande. Pero podría decirte esto:
-
+            Quizás con el tiempo cada uno vaya llenando su vida de nuevas experiencias, nuevas personas, nuevos lugares y nuevos sueños. Y espero sinceramente que los tuyos estén llenos de cosas bonitas. Que cumplas todo aquello que te propongas, que sigas siendo esa persona capaz de hacer bonito hasta un momento completamente normal y que nunca olvides lo increíble que puedes llegar a ser.
           </p>
 
-
-
-          <div class="special-quote">
-
-            <p>
-
-              <strong>
-
-                fuiste mi bonita, fuiste mi mundo durante una etapa de mi
-                vida y, aunque el tiempo haya pasado, todavía existe una
-                parte de mí que te quiere profundamente.
-
-              </strong>
-
-            </p>
-
-          </div>
-
-
-
           <p>
-
-            No sé si algún día volveremos a ser nosotros. Pero sí sé que
-            siempre voy a agradecer haberte conocido. Y si alguna
-            vez vuelves a mirar hacia atrás y te preguntas si realmente
-            fuiste importante para mí... sí. Lo fuiste. Y mucho.
-
+            Si alguna vez vuelves a encontrarte con alguna de esas pequeñas cosas que te recuerden a nosotros —una canción, un atardecer, una Monster, unas gomitas ácidas o cualquier otra tontería de esas que alguna vez compartimos—, espero que simplemente sonrías. Porque yo también quiero recordarte así: con una sonrisa y con muchísimo cariño.
           </p>
 
+          <p>
+            No sé qué caminos nos tenga preparados el destino a partir de ahora, pero sí sé algo: siempre voy a desearte lo mejor. Incluso cuando no esté cerca para verlo, voy a alegrarme por cada cosa bonita que consigas y voy a esperar que la vida te trate muy bien.
+          </p>
 
+          <p>
+            Gracias por haber llegado a mi vida, por haber sido mi bonita durante un tiempo y por haberme regalado tantos recuerdos que voy a guardar conmigo.
+          </p>
+
+          <p>
+            Fue muy bonito coincidir contigo.
+          </p>
+
+          <p>
+            Y aunque quizás esta sea una de esas cosas que simplemente quería decirte una vez más, quería que quedara claro que todo el cariño que te tengo nace de algo muy sencillo: fui muy feliz de haberte conocido.
+          </p>
+
+          <p>
+            Cuídate muchísimo, Keyssi :). Sigue persiguiendo tus sueños, sigue haciendo tus cosas, sigue siendo tú. Sigue siendo esa chica tan linda y con un corazón tan hermoso.
+          </p>
+
+          <p>
+            Te quiero muchísimo y siempre voy a desear que te vaya increíble.
+          </p>
 
           <!-- FIRMA -->
 
           <div class="signature">
 
             <small>
-
-              Con cariño,
-
+              Con muchísimo cariño,
             </small>
 
-
             <strong>
-
-              tu bonito.
-
+              Soto
             </strong>
-
 
             <span
               class="signature-heart"
               aria-hidden="true"
             >
-
               ♡
-
             </span>
 
           </div>
 
-
         </div>
 
-
       </article>
-
-
 
       <!-- ===================================================
            FINAL
@@ -2052,68 +1706,50 @@
 
       <footer class="final-area">
 
-
         <div class="final-line">
-
           Algunas cosas se quedan
-
         </div>
-
 
         <button
           class="bottom-back"
           type="button"
           onclick="volver()"
         >
-
           ← Volver
-
         </button>
-
 
       </footer>
 
-
     </div>
-
 
   </main>
 
-
-
   <!-- =======================================================
        SUPABASE
-       ======================================================= -->
+       ======================================================== -->
 
   <script
     src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
   ></script>
 
-
-
   <script>
 
     /* =======================================================
        SUPABASE
-       ======================================================= */
-
+       ======================================================== */
 
     const SUPABASE_URL =
       'https://wrfpnjsdjwotlzhguncj.supabase.co';
 
-
     const SUPABASE_ANON_KEY =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndyZnBuanNkandvdGx6aGd1bmNqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk4NjY1NTMsImV4cCI6MjEwNTQ0MjU1M30.zlk6zoH1UVQUvBUS9tk07tIHeHOgeiUjEp7d0FvdWwM';
-
 
     const SUPABASE_TABLE =
       'carta_visitas';
 
-
-
     /* =======================================================
        BOTÓN VOLVER
-       ======================================================= */
+       ======================================================== */
 
     function volver() {
 
@@ -2130,7 +1766,6 @@
 
       }
 
-
       /*
         Si entraron directamente mediante
         un enlace, vuelve a index.html.
@@ -2141,16 +1776,13 @@
 
     }
 
-
-
     /* =======================================================
        REGISTRAR APERTURA
-       ======================================================= */
+       ======================================================== */
 
     async function registrarAperturaCarta() {
 
       try {
-
 
         /*
           Verificamos que Supabase cargó correctamente.
@@ -2163,8 +1795,6 @@
           return;
 
         }
-
-
 
         /*
           Creamos el cliente.
@@ -2193,8 +1823,6 @@
 
           );
 
-
-
         /*
           Insertamos una fila VACÍA.
 
@@ -2215,8 +1843,6 @@
               {}
             ]);
 
-
-
         if (error) {
 
           /*
@@ -2234,11 +1860,9 @@
 
         }
 
-
       }
 
       catch (error) {
-
 
         /*
           Si falla Supabase,
@@ -2250,16 +1874,13 @@
           error
         );
 
-
       }
 
     }
 
-
-
     /* =======================================================
        EJECUTAR UNA VEZ AL ABRIR LA PÁGINA
-       ======================================================= */
+       ======================================================== */
 
     window.addEventListener(
 
@@ -2277,9 +1898,7 @@
 
     );
 
-
   </script>
-
 
 </body>
 
