@@ -1,1516 +1,3054 @@
 <!doctype html>
+
 <html lang="es">
+
 <head>
+
   <meta charset="utf-8" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
   <meta name="theme-color" content="#17122a" />
+
   <meta name="description" content="Un pequeño rincón con una notita distinta cada día de octubre." />
+
   <title>Cartas de octubre 🌷</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
   <style>
+
 :root {
+
   --bg-1: #f6f1e8;
+
   --bg-2: #dfebef;
+
   --bg-3: #f1d8d1;
+
   --ink: #2c2434;
+
   --muted: #6f6678;
+
   --accent: #9f6577;
+
   --accent-soft: rgba(159, 101, 119, .15);
+
   --card: rgba(255, 255, 255, .72);
+
   --card-border: rgba(255, 255, 255, .58);
+
   --shadow: 0 28px 80px rgba(62, 38, 59, .18);
+
   --glow: rgba(221, 166, 183, .34);
+
   --period-text: #765160;
+
   --period-bg: rgba(159, 101, 119, .12);
+
 }
+
+
 
 * { box-sizing: border-box; }
+
 html { min-height: 100%; background: var(--bg-1); }
+
 body {
+
   margin: 0;
+
   min-height: 100vh;
+
   min-height: 100svh;
+
   overflow-x: hidden;
+
   color: var(--ink);
+
   font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
   background:
+
     radial-gradient(circle at 12% 12%, rgba(255,255,255,.85), transparent 32%),
+
     linear-gradient(145deg, var(--bg-1), var(--bg-2) 50%, var(--bg-3));
+
   transition: background 1.2s ease, color .8s ease;
+
 }
 
+
+
 body[data-period="morning"] {
+
   --bg-1: #fff6df;
+
   --bg-2: #f7d9c5;
+
   --bg-3: #e6cdd8;
+
   --ink: #3b2d39;
+
   --muted: #77626c;
+
   --accent: #b36b70;
+
   --accent-soft: rgba(179, 107, 112, .14);
+
   --card: rgba(255, 252, 246, .75);
+
   --card-border: rgba(255,255,255,.68);
+
   --glow: rgba(255, 185, 137, .42);
+
   --period-text: #8b584f;
+
   --period-bg: rgba(220, 132, 96, .13);
+
 }
+
 body[data-period="day"] {
+
   --bg-1: #f4f3ed;
+
   --bg-2: #d9edf2;
+
   --bg-3: #e8d7e4;
+
   --ink: #2d3040;
+
   --muted: #68707f;
+
   --accent: #746e9f;
+
   --accent-soft: rgba(116, 110, 159, .14);
+
   --card: rgba(255,255,255,.70);
+
   --glow: rgba(167, 203, 222, .36);
+
   --period-text: #5d6385;
+
   --period-bg: rgba(116,110,159,.12);
+
 }
+
 body[data-period="evening"] {
+
   --bg-1: #f4d7c4;
+
   --bg-2: #c78e9c;
+
   --bg-3: #6a506f;
+
   --ink: #2f2435;
+
   --muted: #756372;
+
   --accent: #9a5268;
+
   --accent-soft: rgba(154, 82, 104, .14);
+
   --card: rgba(255, 246, 241, .76);
+
   --glow: rgba(255, 159, 126, .40);
+
   --period-text: #864b5d;
+
   --period-bg: rgba(154,82,104,.12);
+
 }
+
 body[data-period="night"] {
+
   --bg-1: #111024;
+
   --bg-2: #242040;
+
   --bg-3: #4b3657;
+
   --ink: #f8f3f7;
+
   --muted: #c9bfd0;
+
   --accent: #e7abc6;
+
   --accent-soft: rgba(231, 171, 198, .15);
+
   --card: rgba(28, 24, 48, .66);
+
   --card-border: rgba(255,255,255,.13);
+
   --shadow: 0 30px 100px rgba(0,0,0,.35);
+
   --glow: rgba(188, 142, 214, .27);
+
   --period-text: #f3cfdf;
+
   --period-bg: rgba(255,255,255,.09);
+
 }
+
+
 
 ::selection { background: var(--accent-soft); }
 
+
+
 .ambient { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+
 .noise {
+
   position: absolute; inset: 0; opacity: .035;
+
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+
 }
+
 .orb { position: absolute; border-radius: 50%; filter: blur(8px); opacity: .34; animation: drift 16s ease-in-out infinite alternate; }
+
 .orb-a { width: 36vw; height: 36vw; min-width: 260px; min-height: 260px; top: -10%; left: -8%; background: rgba(255,255,255,.60); }
+
 .orb-b { width: 28vw; height: 28vw; right: -5%; top: 22%; background: var(--glow); animation-delay: -5s; }
+
 .orb-c { width: 30vw; height: 30vw; left: 28%; bottom: -20%; background: rgba(255,255,255,.18); animation-delay: -10s; }
+
 @keyframes drift { from { transform: translate3d(-1%, -2%, 0) scale(.96); } to { transform: translate3d(3%, 4%, 0) scale(1.08); } }
 
+
+
 .stars { position: absolute; inset: 0; opacity: 0; transition: opacity .8s ease; }
+
 body[data-period="night"] .stars { opacity: 1; }
+
 .star { position: absolute; width: 2px; height: 2px; border-radius: 50%; background: rgba(255,255,255,.9); box-shadow: 0 0 10px rgba(255,255,255,.8); animation: twinkle var(--twinkle, 3s) ease-in-out infinite; }
+
 @keyframes twinkle { 0%,100% { opacity: .25; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.35); } }
 
+
+
 .petals { position: absolute; inset: 0; }
+
 .petal {
+
   position: absolute; top: -12vh; width: 11px; height: 17px; border-radius: 70% 20% 65% 25%;
+
   background: rgba(255, 215, 225, .38); border: 1px solid rgba(255,255,255,.20);
+
   transform: rotate(25deg); animation: fall var(--fall, 14s) linear infinite; animation-delay: var(--delay, 0s); opacity: var(--opacity, .45);
+
 }
+
 @keyframes fall {
+
   0% { transform: translate3d(0,-8vh,0) rotate(0deg); }
+
   50% { transform: translate3d(34px,52vh,0) rotate(170deg); }
+
   100% { transform: translate3d(-20px,116vh,0) rotate(340deg); }
+
 }
+
+
 
 .page-shell { position: relative; z-index: 1; width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: clamp(52px, 7vw, 92px) 0 34px; }
 
+
+
 .back-button {
+
   display: inline-flex;
+
   align-items: center;
+
   gap: 9px;
+
   margin-bottom: 28px;
+
   padding: 11px 16px;
+
   border: 1px solid var(--card-border);
+
   border-radius: 999px;
+
   background: var(--card);
+
   color: var(--ink);
+
   box-shadow: 0 10px 30px rgba(40, 30, 50, .10);
+
   backdrop-filter: blur(14px) saturate(120%);
+
   -webkit-backdrop-filter: blur(14px) saturate(120%);
+
   text-decoration: none;
+
   font-size: 13px;
+
   font-weight: 700;
+
   transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+
 }
+
 .back-button:hover {
+
   transform: translateY(-2px);
+
   box-shadow: 0 14px 34px rgba(40, 30, 50, .16);
+
 }
+
 .back-button:active { transform: scale(.97); }
+
 .back-button .arrow {
+
   font-size: 17px;
+
   line-height: 1;
+
 }
+
+
 
 .hero { max-width: 760px; margin: 0 auto 30px; text-align: center; }
+
 .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+
 .eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px var(--accent-soft); }
+
 .hero h1 { margin: 16px 0 10px; font-family: "Playfair Display", Georgia, serif; font-size: clamp(42px, 7vw, 78px); line-height: .98; letter-spacing: -.045em; font-weight: 600; }
+
 .intro { max-width: 600px; margin: 0 auto; color: var(--muted); font-size: clamp(14px, 2vw, 17px); line-height: 1.75; }
 
+
+
 .note-wrap { position: relative; width: min(760px, 100%); margin: 40px auto 26px; }
+
 .note-glow { position: absolute; inset: 10% 8%; background: var(--glow); filter: blur(55px); border-radius: 50%; transform: scale(1.06); opacity: .85; }
+
 .note-card {
+
   position: relative; overflow: hidden;
+
   background: var(--card); border: 1px solid var(--card-border); border-radius: 30px;
+
   box-shadow: var(--shadow); backdrop-filter: blur(20px) saturate(125%); -webkit-backdrop-filter: blur(20px) saturate(125%);
+
   padding: clamp(22px, 4.6vw, 42px); transition: background .8s ease, border .8s ease, transform .35s ease;
+
 }
+
 .note-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, rgba(255,255,255,.24), transparent 36%, transparent 70%, rgba(255,255,255,.07)); pointer-events: none; }
+
 .note-card.is-changing { transform: translateY(6px) scale(.995); opacity: .5; }
 
+
+
 .note-topbar { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+
 .date-block { display: flex; align-items: center; gap: 14px; min-width: 0; }
+
 .day-number { font-family: "Playfair Display", Georgia, serif; font-size: clamp(40px, 7vw, 56px); line-height: 1; color: var(--accent); letter-spacing: -.04em; }
+
 .weekday, .month-label { margin: 0; }
+
 .weekday { font-weight: 700; font-size: 15px; }
+
 .month-label { margin-top: 3px; color: var(--muted); font-size: 12px; }
+
 .period-pill { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px; color: var(--period-text); background: var(--period-bg); border: 1px solid rgba(255,255,255,.18); border-radius: 999px; font-size: 12px; font-weight: 700; }
+
 .divider { position: relative; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; margin: 28px 0 30px; color: var(--accent); opacity: .65; }
+
 .divider span { height: 1px; background: linear-gradient(90deg, transparent, currentColor); opacity: .35; }
+
 .divider span:last-child { background: linear-gradient(90deg, currentColor, transparent); }
+
 .divider i { font-style: normal; font-size: 10px; }
+
 .note-content { position: relative; min-height: 218px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+
 .note-kicker { margin: 0 0 9px; color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+
 .note-content h2 { max-width: 610px; margin: 0; font-family: "Playfair Display", Georgia, serif; font-size: clamp(29px, 5vw, 43px); line-height: 1.15; letter-spacing: -.03em; font-weight: 600; }
+
 .note-body { max-width: 600px; margin-top: 18px; color: var(--muted); font-size: clamp(15px, 2.2vw, 18px); line-height: 1.8; }
+
 .note-body p { margin: 0 0 12px; }
+
 .note-body p:last-child { margin-bottom: 0; }
+
 .note-body .final-line { margin-top: 20px; color: var(--ink); font-family: "Playfair Display", Georgia, serif; font-size: 1.08em; font-weight: 600; }
 
+
+
 .note-footer { position: relative; margin-top: 34px; }
+
 .progress-meta { display: flex; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 11px; }
+
 .progress-track { width: 100%; height: 4px; margin-top: 10px; overflow: hidden; background: var(--accent-soft); border-radius: 999px; }
+
 .progress-track span { display: block; width: 3.2%; height: 100%; border-radius: inherit; background: var(--accent); transition: width .8s cubic-bezier(.2,.8,.2,1); }
 
+
+
 .month-path { width: min(760px, 100%); margin: 20px auto 0; padding: 20px 4px 0; text-align: center; }
+
 .month-path-title { margin: 0 0 15px; color: var(--muted); font-size: 12px; font-weight: 700; }
+
 .day-dots { display: grid; grid-template-columns: repeat(31, 1fr); gap: 5px; align-items: center; }
+
 .day-dot { position: relative; aspect-ratio: 1; border-radius: 50%; background: rgba(255,255,255,.20); border: 1px solid rgba(255,255,255,.20); transition: transform .3s ease, background .3s ease, box-shadow .3s ease; }
+
 .day-dot.past { background: var(--accent-soft); }
+
 .day-dot.today { background: var(--accent); transform: scale(1.55); box-shadow: 0 0 0 5px var(--accent-soft); }
+
 .month-path-caption { margin: 15px auto 0; max-width: 520px; color: var(--muted); font-size: 11px; line-height: 1.55; }
 
+
+
 footer { display: flex; justify-content: center; align-items: center; gap: 9px; margin-top: 45px; color: var(--muted); font-size: 11px; opacity: .82; }
+
 .footer-flower { filter: saturate(.85); }
 
+
+
 .flower-button { position: fixed; z-index: 5; right: max(18px, env(safe-area-inset-right)); bottom: max(18px, env(safe-area-inset-bottom)); width: 50px; height: 50px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.38); border-radius: 50%; background: var(--card); box-shadow: 0 14px 35px rgba(40,30,50,.18); backdrop-filter: blur(15px); color: inherit; cursor: pointer; font-size: 22px; transition: transform .25s ease, box-shadow .25s ease; }
+
 .flower-button:hover { transform: translateY(-3px) rotate(-5deg); box-shadow: 0 18px 42px rgba(40,30,50,.24); }
+
 .flower-button:active { transform: scale(.94); }
+
 .toast { position: fixed; z-index: 6; left: 50%; bottom: 28px; transform: translate(-50%, 20px); padding: 10px 15px; border-radius: 999px; background: rgba(20,18,28,.84); color: #fff; font-size: 12px; opacity: 0; pointer-events: none; transition: .3s ease; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
 .burst { position: fixed; z-index: 7; pointer-events: none; font-size: 18px; animation: burst 1.25s ease-out forwards; }
+
 @keyframes burst { from { transform: translate(0,0) scale(.6) rotate(0); opacity: 0; } 15% { opacity: 1; } to { transform: translate(var(--x), var(--y)) scale(1.2) rotate(var(--r)); opacity: 0; } }
 
+
+
 .locked-card { text-align: center; padding: 18px 0 6px; }
+
 .locked-card .lock-icon { font-size: 42px; margin-bottom: 12px; }
+
 .locked-card h2 { margin-bottom: 14px; }
 
+
+
 @media (max-width: 640px) {
+
   .page-shell { width: min(100% - 20px, 1120px); padding-top: 38px; }
+
   .back-button { margin-bottom: 22px; padding: 10px 14px; font-size: 12px; }
+
   .hero { margin-bottom: 18px; }
+
   .hero h1 { font-size: clamp(41px, 13vw, 62px); }
+
   .intro { max-width: 92%; font-size: 13px; }
+
   .note-wrap { margin-top: 26px; }
+
   .note-card { border-radius: 25px; padding: 20px 18px 24px; }
+
   .note-topbar { align-items: flex-start; }
+
   .date-block { gap: 10px; }
+
   .period-pill { padding: 8px 10px; font-size: 10px; }
+
   .period-pill span:last-child { display: none; }
+
   .divider { margin: 20px 0 22px; }
+
   .note-content { min-height: 245px; }
+
   .note-content h2 { font-size: clamp(29px, 9vw, 38px); }
+
   .note-body { font-size: 15px; line-height: 1.75; }
+
   .progress-meta { font-size: 10px; }
+
   .day-dots { gap: 3px; }
+
   .month-path-caption { padding: 0 14px; }
+
   .flower-button { width: 46px; height: 46px; font-size: 20px; }
+
 }
+
+
 
 @media (max-width: 380px) {
+
   .eyebrow { font-size: 9px; letter-spacing: .14em; }
+
   .day-number { font-size: 40px; }
+
   .weekday { font-size: 13px; }
+
   .month-label { font-size: 10px; }
+
   .note-card { padding-left: 15px; padding-right: 15px; }
+
 }
+
+
 
 @media (prefers-reduced-motion: reduce) {
+
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+
 }
 
+
+
   </style>
+
 </head>
+
 <body data-period="day">
+
   <div class="ambient" aria-hidden="true">
+
     <div class="orb orb-a"></div>
+
     <div class="orb orb-b"></div>
+
     <div class="orb orb-c"></div>
+
     <div id="stars" class="stars"></div>
+
     <div id="petals" class="petals"></div>
+
     <div class="noise"></div>
+
   </div>
 
+
+
   <main class="page-shell">
+
     <a class="back-button" href="regalo21.html" aria-label="Volver a la página principal del regalo">
+
       <span class="arrow" aria-hidden="true">←</span> Volver al regalo
+
     </a>
 
+
+
     <section class="hero" aria-labelledby="pageTitle">
+
       <div class="eyebrow"><span class="eyebrow-dot"></span> OCTUBRE · 31 PEQUEÑAS NOTITAS</div>
+
       <h1 id="pageTitle">Un mensajito para hoy.</h1>
+
       <p class="intro">Un rincón que cambia contigo, con el día y con la hora. Sin prisa. Solo abre, lee y quédate un ratito. 🌷</p>
+
     </section>
 
+
+
     <section class="note-wrap" aria-live="polite">
+
       <div class="note-glow"></div>
+
       <article class="note-card" id="noteCard">
+
         <div class="note-topbar">
+
           <div class="date-block">
+
             <span id="dayNumber" class="day-number">01</span>
+
             <div>
+
               <p id="weekday" class="weekday">Jueves</p>
+
               <p id="monthLabel" class="month-label">Octubre 2026</p>
+
             </div>
+
           </div>
+
           <div id="periodPill" class="period-pill"><span>🌤️</span><span>Durante el día</span></div>
+
         </div>
+
+
 
         <div class="divider"><span></span><i>✦</i><span></span></div>
 
+
+
         <div class="note-content">
+
           <p id="noteKicker" class="note-kicker">Notita del día</p>
+
           <h2 id="noteTitle">Holaaa, bonita.</h2>
+
           <div id="noteBody" class="note-body"></div>
+
         </div>
+
+
 
         <div class="note-footer">
+
           <div class="progress-meta">
+
             <span id="progressText">Día 1 de 31</span>
+
             <span id="boliviaTime">Hora Bolivia · 16:47</span>
+
           </div>
+
           <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
+
         </div>
+
       </article>
+
     </section>
+
+
 
     <section class="month-path" aria-label="Progreso de octubre">
+
       <p class="month-path-title">Octubre, poquito a poquito</p>
+
       <div id="dayDots" class="day-dots"></div>
+
       <p class="month-path-caption">Los días anteriores quedan como pequeñas lucecitas. El de hoy es el que importa.</p>
+
     </section>
 
+
+
     <footer>
+
       <span>Hecho con cariño para un octubre bonito.</span>
+
       <span class="footer-flower" aria-hidden="true">🌷</span>
+
     </footer>
+
   </main>
 
+
+
   <div id="toast" class="toast" role="status" aria-live="polite">Una flor virtual para ti 🌷</div>
+
   <button id="flowerButton" class="flower-button" type="button" aria-label="Dejar una flor">🌷</button>
 
+
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <script>
+
 const TIME_ZONE = "America/La_Paz";
+
 const TARGET_YEAR = 2026;
+
 const TARGET_MONTH = 10;
 
+
+
 const MESSAGES = {
+
   "1": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bonita.",
+
       "body": [
+
         "Primer día de octubre. Espero que este nuevo mes te encuentre con muchas razones para sonreír y con poquitas cosas que te hagan perder la paciencia. 🤍"
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Holaaa, bonita.",
+
       "body": [
+
         "Ya estamos en octubre. Si hoy necesitabas una pequeña pausa, considera esto tu señal para respirar un poquito y seguir."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes, bonita.",
+
       "body": [
+
         "Espero que tu día haya sido bonito hasta ahora. Y si no lo fue, todavía quedan unas horitas para rescatarlo. 🌷"
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches, bonita.",
+
       "body": [
+
         "Primer día de octubre terminado. Ahora toca descansar y dejar que mañana se encargue de ser otro día bonito."
+
       ]
+
     }
+
   },
+
   "2": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días.",
+
       "body": [
+
         "Espero que hoy te mires aunque sea un ratito y recuerdes que hay una persona increíble detrás de esa carita. 🤍"
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Holaaa.",
+
       "body": [
+
         "Pequeño recordatorio del día: no tienes que tener todo resuelto hoy. A veces simplemente avanzar un poquito ya es suficiente."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Bonita, ya casi termina el día.",
+
       "body": [
+
         "Espero que entre todas las cosas que hiciste hoy haya habido aunque sea un momento que te haya hecho sonreír."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Deja por hoy las preocupaciones en pausa. Mañana puedes volver a ellas. Ahora descansa, bonita. 🌙"
+
       ]
+
     }
+
   },
+
   "3": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bonita.",
+
       "body": [
+
         "Que hoy te pase algo bonito sin que tengas que esperarlo."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Pausa del día:",
+
       "body": [
+
         "Toma agua, respira, estírate un poquito y continúa. Sí, esto también cuenta como recordatorio oficial. 😂"
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "Si tu día fue pesado, aquí tienes un pequeño rincón donde no tienes que hacer absolutamente nada. Solo estar."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Espero que cierres el día sabiendo que hiciste lo mejor que pudiste. Y eso ya vale muchísimo."
+
       ]
+
     }
+
   },
+
   "4": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bonita.",
+
       "body": [
+
         "Hoy no olvides sonreír. Tienes una linda sonrisa, no lo ocultes."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Hola termómetro.",
+
       "body": [
+
         "Sí, tú termometro. La que está leyendo esto. Solo quería recordarte que eres bastante especial y eres bastante termometro"
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "Ya sobreviviste una buena parte del día. Te felicito oficialmente."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Que descanses bobita, dormi como bolita."
+
       ]
+
     }
+
   },
+
   "5": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días bobita.",
+
       "body": [
+
         "Ojalá hoy tengas un día tranquilo, bonito y con alguna pequeña sorpresa."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita de soto 1",
+
       "body": [
+
         "Nunca sabes qué recuerdo terminará convirtiéndose en uno de tus favoritos."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Bonita, llegó la tarde.",
+
       "body": [
+
         "Espero que hoy hayas tenido al menos un momento que quisieras guardar."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Algunas cosas bonitas no hacen ruido. A veces simplemente aparecen en un día cualquiera y se quedan."
+
       ]
+
     }
+
   },
+
   "6": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bonita.",
+
       "body": [
+
         "Hoy tienes otra oportunidad de hacer algo que te acerque un poquito a eso que quieres."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Pequeño recordatorio:",
+
       "body": [
+
         "Si supieras que cada que veo una monster me acuerdo de ti."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "Tu estomago te reclama que te comas un brownie (no lanzármelo)"
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Cierra los ojitos verder que tienes, descansa y deja que mañana llegue cuando tenga que llegar. 🌙"
+
       ]
+
     }
+
   },
+
   "7": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días.",
+
       "body": [
+
         "Una semana más empieza. Espero que venga cargada de cosas bonitas para ti."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Hola, bonita.",
+
       "body": [
+
         "No sé qué estarás haciendo ahora mismo, pero espero que estés bien."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "Quizás hoy fue un día completamente normal. Y a veces los días normales terminan siendo los que más recordamos."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Gracias por pasar otro ratito por aquí. Sí, esta página se acuerda de ti cada dia :)."
+
       ]
+
     }
+
   },
+
   "8": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bonita.",
+
       "body": [
+
         "Se que lo haras bien hoy, como lo haces todos los dias"
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Mensaje de pausa:",
+
       "body": [
+
         "Respira. Todo puede esperar cinco minutos."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "Espero que la vida te este dando millones de risas"
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Que tus pensamientos se queden tranquilos esta noche y que mañana despiertes con un poquito más de ganas."
+
       ]
+
     }
+
   },
+
   "9": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bonita.",
+
       "body": [
+
         "Espero que hoy encuentres aunque sea una pequeña razón para sonreír y que el día te trate bonito."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita de soto 2",
+
       "body": [
+
         "Hay personas que llegan a tu vida y, sin darse cuenta, terminan dejando pequeños recuerdos en lugares que ni imaginaban."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "No sé cómo estuvo tu día hasta ahora, pero espero que haya tenido al menos un momento que quisieras guardar."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches, bobita.",
+
       "body": [
+
         "Ya hiciste suficiente por hoy. Ahora descansa, ponte cómoda y duerme como bolita."
+
       ]
+
     }
+
   },
+
   "10": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bonita.",
+
       "body": [
+
         "Nunca olvides que tienes una sonrisa muy bonita. Así que úsala mucho hoy."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita romántica",
+
       "body": [
+
         "No sé exactamente qué tiene tu nombre, pero todavía tiene una forma muy bonita de aparecer en mis pensamientos."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "Espero que entre todas las cosas que tengas que hacer hoy también encuentres un ratito para ti."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Que esta noche descanses bonito y que mañana tengas un día todavía más bonito."
+
       ]
+
     }
+
   },
+
   "11": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días.",
+
       "body": [
+
         "Hoy quiero que recuerdes algo sencillo: no tienes que hacer todo perfecto para estar haciendo las cosas bien."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita de soto 3",
+
       "body": [
+
         "Si algún día ves una Monster y te acuerdas de mí, quiero que sepas que probablemente me pasa exactamente lo mismo contigo."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes, bonita.",
+
       "body": [
+
         "Ya pasó buena parte del día. Espero que haya sido amable contigo."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Cierra esos ojitos verdes y deja descansar también todos esos pensamientos que tienes dando vueltas."
+
       ]
+
     }
+
   },
+
   "12": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bobita.",
+
       "body": [
+
         "Que hoy te pase algo bonito sin que lo estés esperando."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Una notita para ti",
+
       "body": [
+
         "Eres de esas personas que uno puede recordar por las cosas más pequeñas."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "A veces un día completamente normal termina convirtiéndose en un recuerdo que años después todavía hace sonreír."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches, bonita.",
+
       "body": [
+
         "Espero que hoy haya quedado aunque sea un pequeño momento bonito para llevarte a dormir."
+
       ]
+
     }
+
   },
+
   "13": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bonita.",
+
       "body": [
+
         "Hoy tienes otro día para hacer cosas que algún día mirarás atrás y agradecerás haber hecho."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita romántica",
+
       "body": [
+
         "De todas las casualidades bonitas que me ha dado la vida, conocerte sigue siendo una de mis favoritas."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "No olvides comer bien, tomar agüita y descansar un poquito cuando puedas."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Mañana habrá otro día esperándote. Por ahora, descansa mucho."
+
       ]
+
     }
+
   },
+
   "14": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días.",
+
       "body": [
+
         "Espero que hoy alguien consiga hacerte sonreír de esas veces en las que ni siquiera puedes evitarlo."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita de soto 4",
+
       "body": [
+
         "Todavía me acuerdo de aquel brownie. No sé qué hice para merecer semejante ataque, pero sigo creyendo que estaba rico."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes, bonita.",
+
       "body": [
+
         "Espero que tu día esté yendo bien. Y si no, todavía queda tiempo para cambiarle un poquito el final."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches, bobita.",
+
       "body": [
+
         "Hoy también te mando un abracito desde este pequeño rincón."
+
       ]
+
     }
+
   },
+
   "15": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bonita.",
+
       "body": [
+
         "No olvides que también está bien tener días tranquilos. No todo tiene que ser extraordinario."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita tierna",
+
       "body": [
+
         "Ojalá nunca olvides lo bonita que eres, incluso en esos días en los que tú no lo notes."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "Quizás hoy no pase nada especial. Pero quién sabe, quizá algún detalle pequeño termine siendo tu parte favorita del día."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Que duermas bonito y que mañana despiertes con un poquito más de ganas de comerte el mundo."
+
       ]
+
     }
+
   },
+
   "16": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días.",
+
       "body": [
+
         "Que hoy tengas muchas razones para sonreír y muy poquitas para preocuparte."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita romántica",
+
       "body": [
+
         "Hay recuerdos que no necesitan repetirse para seguir siendo especiales."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes, bonita.",
+
       "body": [
+
         "Si hoy fue un día largo, ya falta un poquito menos para descansar."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Deja todo por hoy. Mañana puedes continuar con todo eso que tienes en la cabeza."
+
       ]
+
     }
+
   },
+
   "17": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bobita.",
+
       "body": [
+
         "Espero que hoy te encuentres con algo que te haga pensar: “qué bonito esto”."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita de soto 5",
+
       "body": [
+
         "Creo que las gomitas ácidas tienen parte de culpa de algunos de mis recuerdos favoritos."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "Si todavía no sonreíste hoy, considero que esta página tiene una misión pendiente."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches, bonita.",
+
       "body": [
+
         "Duerme mucho. Y si mañana tienes un día pesado, recuerda que también puedes ir poquito a poquito."
+
       ]
+
     }
+
   },
+
   "18": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bonita.",
+
       "body": [
+
         "Hoy también mereces un día bonito, tranquilo y lleno de pequeñas cosas que te hagan feliz."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita tierna",
+
       "body": [
+
         "Tu nombre es uno de esos nombres que uno puede encontrar entre miles y reconocer inmediatamente."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "Espero que la vida esté siendo amable contigo hoy."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Gracias por pasar otro ratito por aquí. Esta página todavía guarda algunas cositas para ti."
+
       ]
+
     }
+
   },
+
   "19": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días.",
+
       "body": [
+
         "Que hoy tengas un motivo para sonreír que no estuviera planeado."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita de soto 6",
+
       "body": [
+
         "Hay canciones que ahora tienen un recuerdo tuyo escondido. Y creo que ya no hay manera de separarlos."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes, bonita.",
+
       "body": [
+
         "No importa si hoy fue increíble o simplemente normal. Espero que haya sido un día bonito para ti."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Ahora sí, a dormir como bolita. Mañana seguimos."
+
       ]
+
     }
+
   },
+
   "20": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bonita.",
+
       "body": [
+
         "Hoy recuerda que eres mucho más que tus días malos, tus preocupaciones y todas esas cosas que a veces te hacen dudar."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita romántica",
+
       "body": [
+
         "Desde que llegaste a mi vida, algunos recuerdos tienen colores un poquito diferentes."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "Espero que hayas encontrado un momento para respirar y simplemente disfrutar de estar donde estás."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Que tus pensamientos se queden tranquilos esta noche. Todo lo demás puede esperar hasta mañana."
+
       ]
+
     }
+
   },
+
   "21": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días.",
+
       "body": [
+
         "Otro día para seguir creciendo, aprendiendo y convirtiéndote en esa persona que quieres ser."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita de soto 7",
+
       "body": [
+
         "Si alguna vez te preguntas qué cosas pequeñas me hacen acordarme de ti, probablemente tendría una lista demasiado larga."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes, bonita.",
+
       "body": [
+
         "Espero que hoy hayas tenido al menos una conversación que te haya hecho sentir bien."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Qué bonito sería que hoy terminaras el día pensando: “valió la pena”."
+
       ]
+
     }
+
   },
+
   "22": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bonita.",
+
       "body": [
+
         "No tengas tanta prisa por llegar a donde quieres. También disfruta todo lo que encuentras en el camino."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita tierna",
+
       "body": [
+
         "Me basta recordar una pequeña cosa de ti para que aparezca una sonrisa sin que me dé cuenta."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "Ya casi termina otro día. Espero que haya sido bueno contigo."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Descansa mucho, bonita. Mañana habrá otro pequeño mensaje esperándote."
+
       ]
+
     }
+
   },
+
   "23": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días.",
+
       "body": [
+
         "Que hoy tengas uno de esos días que después recuerdas con cariño."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita de soto 8",
+
       "body": [
+
         "Un brownie, unas gomitas ácidas, una Monster y una persona bonita. Creo que ya entendiste por dónde van mis recuerdos."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes, bobita.",
+
       "body": [
+
         "Espero que no estés olvidando sonreír."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Que descanses mucho y que mañana venga con algo bonito que todavía no sabes que te espera."
+
       ]
+
     }
+
   },
+
   "24": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bonita.",
+
       "body": [
+
         "Hoy también puedes empezar de nuevo. Aunque ayer no haya sido exactamente como querías."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita romántica",
+
       "body": [
+
         "Hay personas que pasan por tu vida. Y hay personas que, aunque pase el tiempo, siguen teniendo un lugar especial en ella."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "Espero que hoy hayas encontrado algún pequeño momento que quisieras repetir."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Cierra el día con tranquilidad. Hiciste lo que pudiste, y eso también cuenta."
+
       ]
+
     }
+
   },
+
   "25": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días.",
+
       "body": [
+
         "Espero que hoy tengas un día tan bonito como esa sonrisa que escondes a veces."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita de soto 9",
+
       "body": [
+
         "Nunca pensé que una bebida y unas gomitas terminarían siendo capaces de guardar tantos recuerdos."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes, bonita.",
+
       "body": [
+
         "Si hoy alguien te hizo sonreír, espero que lo hayas disfrutado mucho."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Y si nadie consiguió hacerlo, espero que al menos este pequeño mensaje te haya regalado una sonrisa."
+
       ]
+
     }
+
   },
+
   "26": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bonita.",
+
       "body": [
+
         "Hoy no necesitas tener todas las respuestas. Solo sigue avanzando."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita tierna",
+
       "body": [
+
         "Qué bonito que entre tantas personas que existen en el mundo, yo haya tenido la suerte de conocerte."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "Otro día que va quedando atrás. Guarda lo bonito y deja ir poquito a poquito lo demás."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches, bobita.",
+
       "body": [
+
         "Duerme mucho. Mañana será otra oportunidad para hacer algo bonito."
+
       ]
+
     }
+
   },
+
   "27": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días.",
+
       "body": [
+
         "Que hoy encuentres una razón inesperada para sonreír."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita romántica",
+
       "body": [
+
         "No sé cómo explicarlo, pero incluso después de tanto tiempo, mi corazón todavía sabe encontrarte entre mis recuerdos."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes, bonita.",
+
       "body": [
+
         "Espero que la tarde esté siendo tranquila contigo."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Gracias por volver. Todavía quedan algunos mensajes antes de que termine octubre."
+
       ]
+
     }
+
   },
+
   "28": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bonita.",
+
       "body": [
+
         "Otro día, otro pequeño pedacito de tu historia."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita de soto 10",
+
       "body": [
+
         "A veces me acuerdo de cosas completamente normales y pienso: “qué bonito fue ese momento”."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "Espero que hoy hayas podido disfrutar aunque sea de cinco minutos completamente tuyos."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Que descanses bonito. Ya quedan muy poquitos mensajes de octubre."
+
       ]
+
     }
+
   },
+
   "29": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días.",
+
       "body": [
+
         "Que hoy alguien te recuerde lo importante que eres."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita romántica",
+
       "body": [
+
         "Tu nombre sigue siendo uno de mis pensamientos favoritos."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes, bonita.",
+
       "body": [
+
         "Octubre ya casi se nos va. Qué rápido pasan los días cuando uno no se da cuenta."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches.",
+
       "body": [
+
         "Descansa mucho. Mañana todavía habrá otro mensaje esperándote."
+
       ]
+
     }
+
   },
+
   "30": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bonita.",
+
       "body": [
+
         "Penúltimo día de octubre. Espero que este mes te haya dejado muchos momentos bonitos."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Notita de soto 11",
+
       "body": [
+
         "Quizás nunca te dije cuánto significan para mí algunas de esas pequeñas cosas que vivimos. Pero sí, todavía las recuerdo."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "Mira todo lo que pasó este mes. Incluso los días normales terminaron formando parte de una historia."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches, bobita.",
+
       "body": [
+
         "Mañana queda el último mensaje de octubre. Así que duerme bonito."
+
       ]
+
     }
+
   },
+
   "31": {
+
     "morning": {
+
       "emoji": "☀️",
+
       "title": "Buenos días, bonita.",
+
       "body": [
+
         "Último día de octubre. Si llegaste hasta aquí, oficialmente terminaste este pequeño recorrido."
+
       ]
+
     },
+
     "day": {
+
       "emoji": "🌤️",
+
       "title": "Última notita del mes",
+
       "body": [
+
         "Gracias por volver, por leer y por regalarle aunque sea unos segundos de tu día a esta pequeña página."
+
       ]
+
     },
+
     "evening": {
+
       "emoji": "🌇",
+
       "title": "Buenas tardes.",
+
       "body": [
+
         "Octubre se está terminando, pero las cosas bonitas no desaparecen solamente porque cambie el calendario."
+
       ]
+
     },
+
     "night": {
+
       "emoji": "🌙",
+
       "title": "Buenas noches, bonita.",
+
       "body": [
-        "Último mensaje de octubre.\nEspero que alguno de estos pequeños textos haya conseguido hacerte sonreír, recordar algo bonito o simplemente sentirte querida.",
-        "Y si algún día vuelves a entrar por aquí, quién sabe... quizás todavía haya otra pequeña notita esperándote.",
-        "Te quiero muchísimo, bonita. Nunca lo olvides."
+
+                "Octubre llega a su final y con él también terminan estas pequeñas notitas que estuvieron acompañándote durante el mes. No sé si llegaste a abrir esta página, si leíste alguna de ellas o si siquiera te diste cuenta de que estaban aquí. Y está bien, no hace falta saberlo.",
+
+        "Las escribí con mucho cariño, pensando en ti y deseando que, aunque fuera por unos segundos, pudieran sacarte una sonrisa. Hoy simplemente quiero agradecerte por todos los recuerdos, por los momentos bonitos y por haber sido una parte tan especial de mi vida.",
+
+        "Hay personas que dejan recuerdos que uno guarda para siempre, incluso cuando los caminos terminan tomando direcciones distintas. Tú siempre vas a formar parte de una etapa que recordaré con muchísimo cariño.",
+
+        "Con esta última notita se despide octubre y también se despide esta página. Como dice mi ingeniera, algunas cosas simplemente llegan a su final, y creo que estas también merecen tener el suyo. Te deseo lo mejor. Que cumplas cada uno de tus sueños, que tus proyectos salgan adelante y que nunca te falten motivos para ser feliz. Ojalá la vida te sorprenda con cosas muy bonitas como un brownie a tu carita tierna :)"
+
       ]
+
     }
+
   }
+
 };
 
+
+
 const PERIODS = {
+
   morning: { label: "Buenos días", range: "05:00–11:59", emoji: "☀️" },
+
   day: { label: "Durante el día", range: "12:00–17:59", emoji: "🌤️" },
+
   evening: { label: "Tarde / noche", range: "18:00–21:59", emoji: "🌇" },
+
   night: { label: "Buenas noches", range: "22:00–04:59", emoji: "🌙" }
+
 };
+
+
 
 const $ = (selector) => document.querySelector(selector);
 
+
+
 function boliviaParts(date = new Date()) {
+
   const fmt = new Intl.DateTimeFormat("en-US", {
+
     timeZone: TIME_ZONE,
+
     year: "numeric",
+
     month: "numeric",
+
     day: "numeric",
+
     hour: "numeric",
+
     minute: "2-digit",
+
     second: "2-digit",
+
     hourCycle: "h23"
+
   });
+
   const map = Object.fromEntries(fmt.formatToParts(date).filter(p => p.type !== "literal").map(p => [p.type, p.value]));
+
   return {
+
     year: Number(map.year), month: Number(map.month), day: Number(map.day),
+
     hour: Number(map.hour), minute: Number(map.minute), second: Number(map.second)
+
   };
+
 }
+
+
 
 function getPeriod(hour) {
+
   if (hour >= 5 && hour < 12) return "morning";
+
   if (hour >= 12 && hour < 18) return "day";
+
   if (hour >= 18 && hour < 22) return "evening";
+
   return "night";
+
 }
+
+
 
 function prettyDate(date = new Date()) {
+
   const text = new Intl.DateTimeFormat("es-BO", {
+
     timeZone: TIME_ZONE,
+
     weekday: "long",
+
     day: "numeric",
+
     month: "long"
+
   }).format(date);
+
   return text.charAt(0).toUpperCase() + text.slice(1);
+
 }
+
+
 
 function prettyWeekday(date = new Date()) {
+
   const text = new Intl.DateTimeFormat("es-BO", { timeZone: TIME_ZONE, weekday: "long" }).format(date);
+
   return text.charAt(0).toUpperCase() + text.slice(1);
+
 }
+
+
 
 function updateDayDots(activeDay, state = "active") {
+
   const wrap = $("#dayDots");
+
   wrap.innerHTML = "";
+
   for (let day = 1; day <= 31; day++) {
+
     const dot = document.createElement("span");
+
     dot.className = "day-dot";
+
     dot.title = `Octubre ${day}`;
+
     if (state === "after") dot.classList.add("past");
+
     if (state === "active") {
+
       if (day < activeDay) dot.classList.add("past");
+
       if (day === activeDay) dot.classList.add("today");
+
     }
+
     wrap.appendChild(dot);
+
   }
+
 }
+
+
 
 function setBodyParagraphs(lines = []) {
+
   const body = $("#noteBody");
+
   body.innerHTML = "";
+
   lines.forEach((line, index) => {
+
     const p = document.createElement("p");
+
     p.textContent = line;
+
     if (/^Te quiero muchísimo/i.test(line)) p.classList.add("final-line");
+
     body.appendChild(p);
+
   });
+
 }
 
+
+
 function renderOctoberMessage(parts, period) {
+
   const dayData = MESSAGES[parts.day];
+
   const message = dayData[period];
+
   const date = new Date();
+
   const info = PERIODS[period];
 
+
+
   $("#dayNumber").textContent = String(parts.day).padStart(2, "0");
+
   $("#weekday").textContent = prettyWeekday(date);
+
   $("#monthLabel").textContent = `Octubre ${TARGET_YEAR}`;
+
   $("#periodPill").innerHTML = `<span>${info.emoji}</span><span>${info.label}</span>`;
+
   $("#noteKicker").textContent = `${info.range} · hora Bolivia`;
+
+  $("#noteTitle").textContent = message.title;
+
+  setBodyParagraphs(message.body);
+
+  $("#progressText").textContent = `Día ${parts.day} de 31`;
+
+  $("#boliviaTime").textContent = `Hora Bolivia · ${String(parts.hour).padStart(2,"0")}:${String(parts.minute).padStart(2,"0")}`;
+
+  $("#progressBar").style.width = `${(parts.day / 31) * 100}%`;
+
+  updateDayDots(parts.day, "active");
+
+  document.title = `${message.title} · Octubre ${parts.day} 🌷`;
+
+}
+
+
+
+// Desde el 31 de octubre de 2026 a las 22:00 (hora Bolivia),
+// la última notita queda visible permanentemente, incluso en años posteriores.
+function renderFinalFarewell(parts) {
+  const message = MESSAGES[31].night;
+  const info = PERIODS.night;
+  $("#dayNumber").textContent = "31";
+  $("#weekday").textContent = "Sábado";
+  $("#monthLabel").textContent = "Octubre 2026";
+  $("#periodPill").innerHTML = `<span>${info.emoji}</span><span>Última notita</span>`;
+  $("#noteKicker").textContent = "Una despedida que se queda aquí";
   $("#noteTitle").textContent = message.title;
   setBodyParagraphs(message.body);
-  $("#progressText").textContent = `Día ${parts.day} de 31`;
+  $("#progressText").textContent = "Día 31 de 31";
   $("#boliviaTime").textContent = `Hora Bolivia · ${String(parts.hour).padStart(2,"0")}:${String(parts.minute).padStart(2,"0")}`;
-  $("#progressBar").style.width = `${(parts.day / 31) * 100}%`;
-  updateDayDots(parts.day, "active");
-  document.title = `${message.title} · Octubre ${parts.day} 🌷`;
+  $("#progressBar").style.width = "100%";
+  updateDayDots(31, "after");
+  document.title = "Última notita de octubre 🌙";
 }
 
 function renderOutsideOctober(parts, period) {
+
   const before = parts.year < TARGET_YEAR || (parts.year === TARGET_YEAR && parts.month < TARGET_MONTH);
+
   const info = PERIODS[period];
+
   $("#dayNumber").textContent = before ? "01" : "31";
+
   $("#weekday").textContent = before ? "Muy pronto" : "Hasta aquí";
+
   $("#monthLabel").textContent = `Octubre ${TARGET_YEAR}`;
+
   $("#periodPill").innerHTML = `<span>${info.emoji}</span><span>${info.label}</span>`;
+
   $("#noteKicker").textContent = before ? "Este rincón todavía está dormidito" : "El calendario siguió, este rincón se quedó";
+
   $("#noteTitle").textContent = before ? "Nos vemos en octubre. 🌷" : "Octubre terminó, pero lo bonito se queda.";
+
   setBodyParagraphs(before
+
     ? ["Este pequeño rincón abre el 1 de octubre de 2026. Cuando llegue el día, habrá una notita esperando."]
+
     : ["Si volviste por aquí después de octubre, gracias por regresar.", "Las notitas ya hicieron su recorrido, pero este pequeño rincón puede seguir guardando un recuerdo bonito."]
+
   );
+
   $("#progressText").textContent = before ? "Esperando el día 1" : "31 de 31";
+
   $("#boliviaTime").textContent = `Hora Bolivia · ${String(parts.hour).padStart(2,"0")}:${String(parts.minute).padStart(2,"0")}`;
+
   $("#progressBar").style.width = before ? "0%" : "100%";
+
   updateDayDots(before ? 1 : 31, before ? "before" : "after");
+
 }
+
+
 
 let lastRenderKey = "";
+
 function render() {
+
   const parts = boliviaParts();
+
   const period = getPeriod(parts.hour);
+
   const renderKey = `${parts.year}-${parts.month}-${parts.day}-${period}-${parts.hour}-${parts.minute}`;
+
   if (renderKey === lastRenderKey) return;
+
   lastRenderKey = renderKey;
 
+
+
   document.body.dataset.period = period;
+
   const inOctober = parts.year === TARGET_YEAR && parts.month === TARGET_MONTH && parts.day >= 1 && parts.day <= 31;
+  const farewellStarted = parts.year > TARGET_YEAR ||
+    (parts.year === TARGET_YEAR && (parts.month > TARGET_MONTH ||
+      (parts.month === TARGET_MONTH && parts.day === 31 && parts.hour >= 22)));
+
+  document.body.dataset.period = farewellStarted ? "night" : period;
+
   const card = $("#noteCard");
+
   card.classList.add("is-changing");
+
   window.setTimeout(() => {
-    if (inOctober) renderOctoberMessage(parts, period);
+
+    if (farewellStarted) renderFinalFarewell(parts);
+    else if (inOctober) renderOctoberMessage(parts, period);
     else renderOutsideOctober(parts, period);
+
     card.classList.remove("is-changing");
+
   }, 160);
+
 }
+
+
 
 function createAmbient() {
+
   const stars = $("#stars");
+
   const petals = $("#petals");
+
   for (let i = 0; i < 58; i++) {
+
     const star = document.createElement("span");
+
     star.className = "star";
+
     star.style.left = `${Math.random() * 100}%`;
+
     star.style.top = `${Math.random() * 100}%`;
+
     star.style.setProperty("--twinkle", `${2 + Math.random() * 4}s`);
+
     star.style.animationDelay = `${-Math.random() * 4}s`;
+
     stars.appendChild(star);
+
   }
+
   for (let i = 0; i < 13; i++) {
+
     const petal = document.createElement("span");
+
     petal.className = "petal";
+
     petal.style.left = `${Math.random() * 100}%`;
+
     petal.style.setProperty("--fall", `${12 + Math.random() * 12}s`);
+
     petal.style.setProperty("--delay", `${-Math.random() * 20}s`);
+
     petal.style.setProperty("--opacity", `${0.18 + Math.random() * 0.30}`);
+
     petals.appendChild(petal);
+
   }
+
 }
+
+
 
 function setupFlowerSurprise() {
+
   const button = $("#flowerButton");
+
   const toast = $("#toast");
+
   let toastTimer;
+
   button.addEventListener("click", () => {
+
     const rect = button.getBoundingClientRect();
+
     const originX = rect.left + rect.width / 2;
+
     const originY = rect.top + rect.height / 2;
+
     const symbols = ["🌷", "✦", "♡", "·", "🌸"];
+
     for (let i = 0; i < 11; i++) {
+
       const bit = document.createElement("span");
+
       bit.className = "burst";
+
       bit.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
       bit.style.left = `${originX}px`;
+
       bit.style.top = `${originY}px`;
+
       bit.style.setProperty("--x", `${-120 + Math.random() * 120}px`);
+
       bit.style.setProperty("--y", `${-70 - Math.random() * 130}px`);
+
       bit.style.setProperty("--r", `${-100 + Math.random() * 200}deg`);
+
       document.body.appendChild(bit);
+
       setTimeout(() => bit.remove(), 1400);
+
     }
+
     toast.classList.add("show");
+
     clearTimeout(toastTimer);
+
     toastTimer = setTimeout(() => toast.classList.remove("show"), 1800);
+
   });
+
 }
+
+
 
 async function bestEffortDeviceName() {
+
   try {
+
     if (navigator.userAgentData?.getHighEntropyValues) {
+
       const high = await navigator.userAgentData.getHighEntropyValues(["model", "platform", "platformVersion"]);
+
       if (high.model) return `${high.model}${high.platform ? ` · ${high.platform}` : ""}`;
+
     }
+
   } catch (_) {}
 
+
+
   const ua = navigator.userAgent || "";
+
   if (/iPhone/i.test(ua)) return "iPhone";
+
   if (/iPad/i.test(ua)) return "iPad";
+
   if (/Android/i.test(ua)) {
-    const match = ua.match(/Android[^;]*;\s*([^;)]+?)(?:\s+Build\/|\)|;)/i);
+
+    const match = ua.match(/Android[^;]*;\s*([^;)]+?)(?:\s+Build|\)|;)/i);
+
     if (match?.[1]) return match[1].trim();
+
     return "Teléfono Android";
+
   }
+
   if (/Windows/i.test(ua)) return "PC Windows";
+
   if (/Macintosh|Mac OS X/i.test(ua)) return "Mac";
+
   if (/Linux/i.test(ua)) return "Equipo Linux";
+
   return "Dispositivo no identificado";
+
 }
+
+
+
+// Registro de sesiones mediante funciones RPC de Supabase.
+// Preserva todas las columnas antiguas y actualiza únicamente la visita actual.
+const SUPABASE_URL = "https://wrfpnjsdjwotlzhguncj.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndyZnBuanNkandvdGx6aGd1bmNqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk4NjY1NTMsImV4cCI6MjEwNTQ0MjU1M30.zlk6zoH1UVQUvBUS9tk07tIHeHOgeiUjEp7d0FvdWwM";
+let visitClient = null;
+let visitToken = null;
+let visitReady = false;
+let visitExitSent = false;
+let pageClosing = false;
 
 async function registerVisit() {
-  // Datos públicos de tu proyecto Supabase (anon/publishable key).
-  // La fecha y hora NO se mandan desde el teléfono: las genera Supabase
-  // con los defaults de la tabla usando America/La_Paz.
-  const SUPABASE_URL = "https://wrfpnjsdjwotlzhguncj.supabase.co";
-  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndyZnBuanNkandvdGx6aGd1bmNqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk4NjY1NTMsImV4cCI6MjEwNTQ0MjU1M30.zlk6zoH1UVQUvBUS9tk07tIHeHOgeiUjEp7d0FvdWwM";
-
-  if (!window.supabase?.createClient) return;
-
+  if (!window.supabase?.createClient || !crypto?.randomUUID) {
+    console.warn("Supabase o crypto.randomUUID no están disponibles en esta página.");
+    return;
+  }
   try {
-    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    visitClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
       auth: { persistSession: false, autoRefreshToken: false }
     });
-
+    visitToken = crypto.randomUUID();
     const dispositivo = await bestEffortDeviceName();
-    const userAgent = navigator.userAgent || "User-Agent no disponible";
-
-    // La tabla visitas_octubre genera automáticamente:
-    // id, identificador UUID, fecha_bolivia, hora_bolivia y creado_en.
-    // Desde la web solo enviamos la información del dispositivo.
-    const { error } = await supabaseClient
-      .from("visitas_octubre")
-      .insert([{
-        dispositivo,
-        user_agent: userAgent
-      }]);
-
-    if (error) console.warn("No se pudo registrar la visita en visitas_octubre:", error.message);
+    const { error } = await visitClient.rpc("registrar_entrada_octubre", {
+      p_token: visitToken,
+      p_dispositivo: dispositivo,
+      p_user_agent: navigator.userAgent || "User-Agent no disponible"
+    });
+    if (error) {
+      console.warn("Error al registrar entrada en Supabase:", error.message);
+      return;
+    }
+    visitReady = true;
+    if (pageClosing) registerPageExit();
   } catch (error) {
-    console.warn("No se pudo registrar la visita en visitas_octubre:", error);
+    console.warn("Error al iniciar el registro de visitas:", error);
   }
 }
 
+function registerPageExit() {
+  pageClosing = true;
+  if (!visitReady || !visitToken || visitExitSent) return;
+  visitExitSent = true;
+  // keepalive intenta completar la operación aunque la pestaña se cierre.
+  fetch(`${SUPABASE_URL}/rest/v1/rpc/registrar_salida_octubre`, {
+    method: "POST",
+    keepalive: true,
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ p_token: visitToken })
+  }).then(response => {
+    if (!response.ok) console.warn("Supabase no aceptó la salida:", response.status);
+  }).catch(error => console.warn("No se pudo registrar la salida:", error));
+}
+
+window.addEventListener("pagehide", registerPageExit);
+// Respaldo al pasar la página a segundo plano (especialmente en móviles).
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "hidden") registerPageExit();
+});
+
+
 createAmbient();
+
 setupFlowerSurprise();
+
 render();
+
 registerVisit();
+
 setInterval(render, 30_000);
 
+
+
   </script>
+
 </body>
+
 </html>
